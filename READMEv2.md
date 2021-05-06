@@ -125,13 +125,31 @@ export PS1="(chroot) $PS1"
 mount /dev/sda1 /boot
 ```
 
-# Make.conf
+# Configure portage
+
+## Ebuild repository 
+
+```bash
+emerge-webrsync
+emerge --sync --quiet
+```
+
+## Choose profile
+
+```bash
+eselect profile list
+eselect profile set 5
+eselect profile show # expect amd64 generic multilib openrc desktop
+```
+
+# Make conf
 
 Sources:
 - [Official wiki](https://wiki.gentoo.org/wiki//etc/portage/make.conf)
 - local documentation: `/mnt/gentoo/usr/share/portage/config/make.conf.example`
+- [Online man](https://dev.gentoo.org/~zmedico/portage/doc/man/make.conf.5.html)
 
-## xFLAGS
+## Compiler flags
 
 Sources:
 - [GCC optimization](https://wiki.gentoo.org/wiki/GCC_optimization#-march)
@@ -146,6 +164,31 @@ gcc -v -E -x c /dev/null -o /dev/null -march=native 2>&1 | grep /cc1
 [CPU_FLAGS_X86 to set CPU specific instructions](https://wiki.gentoo.org/wiki/CPU_FLAGS_X86#Using_cpuid2cpuflags)
 
 ```bash
-emerge --ask app-portage/cpuid2cpuflags
+emerge --ask --oneshot app-portage/cpuid2cpuflags
+perl -ni -e 'print unless /^[[:blank:]]*CPU_FLAGS_X86/' /etc/portage/make.conf
+cpuid2cpuflags | perl -pe 's/(?<=[:]\ )([\w[:blank:]]+)/"$1"/; s/[:]/\ =/;' >> /etc/portage/make.conf
 ```
 
+## Makeopts
+
+Sources:
+- [Official](https://wiki.gentoo.org/wiki/MAKEOPTS)
+- [Note on parallel builds](https://www.preney.ca/paul/archives/341)
+
+```bash
+grep '^processor' /proc/cpuinfo | sort -u | wc -l
+```
+
+## Emerege deafault options
+
+Sources:
+- [Official](https://wiki.gentoo.org/wiki/EMERGE_DEFAULT_OPTS)
+- [Note on parallel builds](https://www.preney.ca/paul/archives/341)
+
+```bash
+grep '^processor' /proc/cpuinfo | sort -u | wc -l
+```
+
+## Features
+
+[Binary package guide](https://wiki.gentoo.org/wiki/Binary_package_guide)

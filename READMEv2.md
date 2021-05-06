@@ -73,5 +73,79 @@ wget ${TARBALL_LINK}
 [Untar from non Gentoo liveCD](https://wiki.gentoo.org/wiki/Installation_alternatives#Installation_instructions)
 
 ```bash
-tar --numeric-owner --xattrs -xvJpf stage3-*.tar.xz -C /mnt/gentoo 
+tar --numeric-owner --xattrs -xvJpf stage3-*.tar.xz -C /mnt/gentoo # installation alternative instruction
 ```
+
+# Chroot
+
+## Ebuild repository
+
+```bash
+mkdir --parents /mnt/gentoo/etc/portage/repos.conf
+cp /mnt/gentoo/usr/share/portage/config/repos.conf /mnt/gentoo/etc/portage/repos.conf/gentoo.conf
+```
+
+## DNS info
+
+```bash
+cp --dereference /etc/resolv.conf /mnt/gentoo/etc/
+```
+
+## Mount filesystems
+
+Sources:
+- [Handbook notes on non Gentoo installation media](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Base#Mounting_the_necessary_filesystems)
+- [Additional note on proc mount](https://wiki.gentoo.org/wiki/Installation_alternatives#Installation_instructions)
+
+```bash
+mount -o bind /proc /mnt/gentoo/proc  # installation alternative instruction
+mount --rbind /sys /mnt/gentoo/sys 
+mount --make-rslave /mnt/gentoo/sys 
+mount --rbind /dev /mnt/gentoo/dev 
+mount --make-rslave /mnt/gentoo/dev 
+test -L /dev/shm && rm /dev/shm && mkdir /dev/shm 
+mount --types tmpfs --options nosuid,nodev,noexec shm /dev/shm 
+```
+
+## Entering environment
+
+Source: 
+- [Note on enviroment setup](https://wiki.gentoo.org/wiki/Installation_alternatives#Installation_instructions)
+
+```bash
+chroot /mnt/gentoo /bin/env -i TERM=$TERM /bin/bash
+env-update 
+source /etc/profile 
+export PS1="(chroot) $PS1" 
+```
+
+## Mount boot partition
+
+```bash
+mount /dev/sda1 /boot
+```
+
+# Make.conf
+
+Sources:
+- [Official wiki](https://wiki.gentoo.org/wiki//etc/portage/make.conf)
+- local documentation: `/mnt/gentoo/usr/share/portage/config/make.conf.example`
+
+## xFLAGS
+
+Sources:
+- [GCC optimization](https://wiki.gentoo.org/wiki/GCC_optimization#-march)
+- [Safe CFLAGS](https://wiki.gentoo.org/wiki/Safe_CFLAGS)
+
+[Automatic CPU detection by the compiler](https://wiki.gentoo.org/wiki/Safe_CFLAGS#Automatic_CPU_detection_by_the_compiler). See what it will detect:
+
+```bash
+gcc -v -E -x c /dev/null -o /dev/null -march=native 2>&1 | grep /cc1
+```
+
+[CPU_FLAGS_X86 to set CPU specific instructions](https://wiki.gentoo.org/wiki/CPU_FLAGS_X86#Using_cpuid2cpuflags)
+
+```bash
+emerge --ask app-portage/cpuid2cpuflags
+```
+

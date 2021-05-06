@@ -192,3 +192,52 @@ grep '^processor' /proc/cpuinfo | sort -u | wc -l
 ## Features
 
 [Binary package guide](https://wiki.gentoo.org/wiki/Binary_package_guide)
+
+## Mirror select
+
+[Wiki](https://wiki.gentoo.org/wiki/Mirrorselect)
+
+```bash
+emerge --oneshot mirrorselect
+mirrorselect -s3 -b100 -D # find top 3 fasterst 
+```
+
+## Accept keywords
+
+[Wiki](https://wiki.gentoo.org/wiki/ACCEPT_KEYWORDS)
+
+## Localization
+
+[Wiki](https://wiki.gentoo.org/wiki/Localization/Guide#LINGUAS)
+[Wiki](https://wiki.gentoo.org/wiki/Localization/Guide#L10N)
+
+## License preference
+
+[Wiki](https://wiki.gentoo.org/wiki//etc/portage/make.conf#ACCEPT_LICENSE)
+
+## Use flags
+
+[Wiki](https://wiki.gentoo.org/wiki/Handbook:AMD64/Working/USE)
+
+# Localization
+
+## Timezone
+
+```bash
+ls /usr/share/zoneinfo
+echo "Europe/Sofia" > /etc/timezone
+emerge --config sys-libs/timezonedata
+```
+
+## Locales
+
+```bash
+grep -i en_us /usr/share/i18n/SUPPORTED >> /etc/locale.gen
+locale-gen
+eselect locale list
+eselect locale set 4
+eselect locale show
+env-update
+source /etc/profile
+export PS1="(chroot) ${PS1}
+```

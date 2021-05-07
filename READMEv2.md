@@ -221,6 +221,8 @@ mirrorselect -s3 -b100 -D # find top 3 fasterst
 
 [Gentoolkit](https://wiki.gentoo.org/wiki/Gentoolkit#euse)
 
+[Portage util](https://wiki.gentoo.org/wiki/Q_applets)
+
 ## Update the world set
 
 Will take a while

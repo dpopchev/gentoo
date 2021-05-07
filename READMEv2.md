@@ -219,6 +219,14 @@ mirrorselect -s3 -b100 -D # find top 3 fasterst
 
 [Wiki](https://wiki.gentoo.org/wiki/Handbook:AMD64/Working/USE)
 
+## Update the world set
+
+Will take a while
+
+```bash
+emerge --ask --verbose --update --deep --newuse @world
+```
+
 # Localization
 
 ## Timezone

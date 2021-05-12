@@ -40,10 +40,15 @@ Notes:
 - [apply filesystems](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Disks#Partitioning_the_disk_with_GPT_for_UEFI)
 
 ```bash
-lsblk -o +fstype,label   # list storage devices with their filesystem types
+# list storage devices with their filesystem types
+lsblk -o +fstype,label   
+```
+```bash
 # disable any swap partition that is on
 test $(swapon --summary | head --bytes=1 | wc --bytes) -ne 0 \
   && swapoff $(swapon -s | grep --perl-regexp --only-matching '\/dev\/sd\w+')
+```
+```bash
 # Make sure you have booted with a UEFI machine if you choose ‘gpt’
 # If the below command does not say it safe, you should reserch more
 ls /sys/firmware | grep --perl-regexp --quiet '\befi\b && echo 'Safe to poceed with GPT table'

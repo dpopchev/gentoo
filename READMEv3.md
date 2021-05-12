@@ -37,7 +37,7 @@ Notes:
 - [Partition tool `parted`](https://wiki.archlinux.org/title/Parted)
 - [Interesting reading on optimal partitioning](https://rainbow.chard.org/2013/01/30/how-to-align-partitions-for-best-performance-using-parted/)
 - [swap disabaling line inspired by](https://stackoverflow.com/a/35165216/3169522)\
-- [create filesystems](kkhttps://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Disks#Partitioning_the_disk_with_GPT_for_UEFI)
+- [apply filesystems](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Disks#Partitioning_the_disk_with_GPT_for_UEFI)
 
 ```bash
 lsblk -o +fstype,label   # list storage devices with their filesystem types

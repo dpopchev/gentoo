@@ -264,4 +264,137 @@ emerge -av vim
 - [Gentoo gcc optimization wiki](https://wiki.gentoo.org/wiki/GCC_optimization)
 - [Gentoo safe cflags wiki](https://wiki.gentoo.org/wiki/Safe_CFLAGS)
 
+Flags:
+- [`-O`](https://wiki.gentoo.org/wiki/GCC_optimization#-O)  
+  
+  `-O` controls the overall level of optimization, `-O2` is *recommended* level of optimization unless the system has special needs
 
+- [`-pipe`](https://wiki.gentoo.org/wiki/GCC_optimization#-pipe)
+  
+  Incraces compilation process by telling the compiler to use pipes instead of temporary files 
+  
+- [`-march=native`](https://wiki.gentoo.org/wiki/Safe_CFLAGS#Automatic_CPU_detection_by_the_compiler)
+
+  Enables auto-detection of the CPU's architecture
+  
+  Check what GCC "native" know about your CPU: 
+  ```bash
+  gcc -v -E -x c /dev/null -o /dev/null -march=native 2>&1 | grep /cc1
+  ```
+  
+End result:
+```bash
+grep -iP flags /etc/portage/make.conf
+COMMON_FLAGS="-O2"
+COMMON_FLAGS="${COMMON_FLAGS} -pipe"
+COMMON_FLAGS="${COMMON_FLAGS} -march=native"
+CFLAGS="${COMMON_FLAGS}"
+CXXFLAGS="${COMMON_FLAGS}"
+FCFLAGS="${COMMON_FLAGS}"
+FFLAGS="${COMMON_FLAGS}"
+```
+
+## CPU feature flags
+
+- [Make conf wiki](https://wiki.gentoo.org/wiki//etc/portage/make.conf#CPU_FLAGS_X86)
+- [Gentoo wiki](https://wiki.gentoo.org/wiki/CPU_FLAGS_X86)
+
+The `CPU_FLAGS_X86` variable informs Portage about the CPU flags (features) permitted by the CPU
+```bash
+emerge --ask --oneshot app-portage/cpuid2cpuflags
+perl -ni -e 'print unless /^[[:blank:]]*CPU_FLAGS_X86/' /etc/portage/make.conf                        # rm if present
+cpuid2cpuflags | perl -pe 's/(?<=[:]\ )([\w[:blank:]]+)/"$1"/; s/[:]/\ =/;' >> /etc/portage/make.conf # append detected flags
+```
+
+## Portage features
+
+- [make conf wiki](https://devmanual.gentoo.org/eclass-reference/make.conf/index.html#index)
+
+Features:
+- `candy`
+
+  Enable a special progress indicator when emerge.
+  
+- `downgrade-backup`
+
+  Create a backup of the installed version before it is unmerged (if a binary package of the same version does not already exist)
+  
+- `unmerge-backup`
+
+  Create a backup of each package before it is unmerged (if a binary package of the same version does not already exist)
+  
+[A note on build package emerge counterpart: enabling feature will prevent emerge **--ignore-default-opts** take effect](https://forums.gentoo.org/viewtopic-t-1075024-start-0.html)
+
+End result:
+```bash
+grep -P FEATURE /etc/make.conf
+FEATURE="${FEATURE} candy"
+FEATURE="${FEATURE} downgrade-backup"
+FEATURE="${FEATURE} unmerge-backup"
+```
+
+**NOTE:** interesting to implement `buildpkg` or `buildsyspkg`
+
+## Emerge default options
+
+- [Gentoo wiki](https://wiki.gentoo.org/wiki/EMERGE_DEFAULT_OPTS)
+- [man emerge](https://dev.gentoo.org/~zmedico/portage/doc/man/emerge.1.html)
+
+Default options
+
+- `--usepkg=y` 
+
+  tells emerge to use binary packages (from $PKGDIR) if they are available
+
+- `--binpkg-changed-deps=y`
+
+  Tells emerge to ignore binary packages for which the corresponding ebuild dependencies have changed since the packages were built
+  
+- `--binpkg-respect-use=y`
+  
+  Tells emerge to ignore binary packages if their USE flags don't match the current configuration.
+  
+- `--quiet=y`
+  
+  Results may vary, but the general outcome is a reduced or condensed output from portage's displays
+  
+- `--verbose=y`
+
+  Currently this flag causes emerge to print out GNU info errors, if any, and to show the USE flags that will be used for each package when pretending
+
+- `--keep-going=y`
+
+  Continue as much as possible after an error. See also `--resume` and `--skipfirst`
+
+- `--jobs=${NPROC} --load-average=${NPROC}`
+
+   emerge runs NPROC jobs at a time and try to keep the load average of the system less than ${NPROC}
+  
+End result:
+```bash
+grep -P EMERGE_DEFAULT_OPTS /etc/make.conf
+EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} --usepkg=y"
+EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} --binpkg-changed-deps=y"
+EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} --binpkg-respect-use=y"
+EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} --quiet=y"
+EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} --verbose=y"
+EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} --keep-going=y"
+EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} --jobs=${NPROC} --load-average=${NPROC}"
+```
+
+## Makeopts
+
+- [Handbook](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Stage#MAKEOPTS)
+- [Gentoo wiki](https://wiki.gentoo.org/wiki/MAKEOPTS)
+- [Optimal value makeopts](https://blogs.gentoo.org/ago/2013/01/14/makeopts-jcore-1-is-not-the-best-optimization/)
+- [Optimal value makeopts and emerge paralllels](https://www.preney.ca/paul/archives/341)
+
+- `MAKEOPTS`
+
+  defines how many parallel compilations should occur when installing a package
+  
+End result:
+```
+grep -P MAKEOPTS /etc/make.conf
+MAKEOPTS="--jobs=${NPROC} --load-average=${NPROC}"
+```

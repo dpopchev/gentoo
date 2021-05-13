@@ -217,6 +217,32 @@ mount /dev/sda1 /boot
 
 **NOTE** Subsequent commands assume working in the chroot env, if not otherwise said.
 
+## Configuring Portage
+
+[Handbook](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Base#Configuring_Portage)
+
+### Ebuild repository
+
+[Handbook](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Base#Gentoo_ebuild_repository)
+```bash
+mkdir --parents /etc/portage/repos.conf
+cp /usr/share/portage/config/repos.conf /etc/portage/repos.conf/gentoo.conf
+```
+
+### Installing and updating a Gentoo ebuild repository snapshot 
+
+[Handbook](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Base#Installing_a_Gentoo_ebuild_repository_snapshot_from_the_web)
+```bash
+emerge-webrsync
+emerge --sync --quiet
+```
+
+### Get faouvorite editor
+
+```bash
+emerge -av vim
+```
+
 # Make conf
 
 - [Handbook](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Stage#Configuring_compile_options)
@@ -227,3 +253,15 @@ mount /dev/sda1 /boot
   ```bash
   less /usr/share/portage/config/make.conf.example
   ```
+- Local man
+  ```bash
+  man make.conf
+  ```
+
+## Optimization flags
+
+- [Handbook](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Stage#CFLAGS_and_CXXFLAGS)
+- [Gentoo gcc optimization wiki](https://wiki.gentoo.org/wiki/GCC_optimization)
+- [Gentoo safe cflags wiki](https://wiki.gentoo.org/wiki/Safe_CFLAGS)
+
+

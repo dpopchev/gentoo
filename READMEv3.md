@@ -88,3 +88,39 @@ Mount root partition
 ```bash
 mkdir --parents /mnt/gentoo && mount /dev/sda3 /mnt/gentoo 
 ```
+
+# Install stage tarball
+
+## Update date and time
+
+If the live medium is somehow off.
+
+- Manual
+  ```bash
+  date 100313162016
+  ```
+- Automatic, assumes Gentoo Live CD
+  ```bash
+  ntpd -q -g
+  ```
+
+## Download tarball
+
+[Will go with amd64, multilib, openrc](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Stage#Choosing_a_stage_tarball)
+
+```bash
+wget ${LINK}
+```
+
+[Verify and validate](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Stage#Verifying_and_validating)
+
+## Unpack tarball
+
+- Gentoo live cd
+  ```bash
+  tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner -C /mnt/gentoo 
+  ```
+- [non Gentoo medium](https://wiki.gentoo.org/wiki/Installation_alternatives#Installation_instructions)
+  ```bash
+  tar --numeric-owner --xattrs -xvJpf stage3-*.tar.xz -C /mnt/gentoo 
+  ```

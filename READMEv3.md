@@ -20,8 +20,6 @@ net-setup ${NET_INTERFACE}  # try auto config
 
 #  Preparing the disks 
 
-## Partition
-
 ## Partitioning 
 
 [GPT for UEFI](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Disks#Partitioning_the_disk_with_GPT_for_UEFI)
@@ -72,10 +70,21 @@ parted /dev/sda mkpart gentoo ext4 8GiB 100%
 
 `parted` does not create filesystems, only uses the info to optimize parttions. The later are covered by other [tools](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Disks#Partitioning_the_disk_with_GPT_for_UEFI)
 
-Apply filesystems and activate swap.
+Apply filesystems.
 ```bash
 mkfs.vfat -F 32 /dev/sda1   # efi
 mkfs.ext4 /dev/sda3         # / of gentoo
 mkswap /dev/sda2            # swap
-swapon /dev/sda2            # activate 
+```
+
+## Root and swap partition
+
+Activate swap
+```bash
+swapon /dev/sda2    
+```
+
+Mount root partition
+```bash
+mkdir --parents /mnt/gentoo && mount /dev/sda3 /mnt/gentoo 
 ```

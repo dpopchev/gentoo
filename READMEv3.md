@@ -9,20 +9,25 @@ Main resources:
 
 # Configuring the network 
 
-Applicable if installation using minimal Gentoo Live CD.
+[Handbook](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Networking)
+
+Applicable if installation using minimal .
 
 [Check for summary of methods](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Networking#Default:_Using_net-setup)
 
-```bash
-ip addr                     # see interface names
-net-setup ${NET_INTERFACE}  # try auto config
-```
+- Gentoo Live CD
+  ```bash
+  ip addr                     # see interface names
+  net-setup ${NET_INTERFACE}  # try auto config
+  ```
 
 #  Preparing the disks 
 
+[Handbook](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Disks)
+
 ## Partitioning 
 
-[GPT for UEFI](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Disks#Partitioning_the_disk_with_GPT_for_UEFI)
+[Handbook](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Disks#Partitioning_the_disk_with_GPT_for_UEFI)
 
 Target partitioning
 - GPT table
@@ -33,8 +38,8 @@ Target partitioning
 Notes:
 - [Alternative solutions for partitioning](https://wiki.gentoo.org/wiki/Partition)
 - [Partition tool `parted`](https://wiki.archlinux.org/title/Parted)
-- [Interesting reading on optimal partitioning](https://rainbow.chard.org/2013/01/30/how-to-align-partitions-for-best-performance-using-parted/)
-- [swap disabaling line inspired by](https://stackoverflow.com/a/35165216/3169522)\
+- [On optimal partitioning](https://rainbow.chard.org/2013/01/30/how-to-align-partitions-for-best-performance-using-parted/)
+- [Swap disabaling line inspired by](https://stackoverflow.com/a/35165216/3169522)
 
 List storage devices with their filesystem types.
 ```bash
@@ -68,9 +73,10 @@ parted /dev/sda mkpart gentoo ext4 8GiB 100%
 
 ## Create filesystems
 
-`parted` does not create filesystems, only uses the info to optimize parttions. The later are covered by other [tools](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Disks#Partitioning_the_disk_with_GPT_for_UEFI)
+[Handbook](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Disks#Partitioning_the_disk_with_GPT_for_UEFI)
 
-Apply filesystems.
+`parted` does not create filesystems, only uses the info to optimize parttions. See handbook link above.
+
 ```bash
 mkfs.vfat -F 32 /dev/sda1   # efi
 mkfs.ext4 /dev/sda3         # / of gentoo
@@ -78,6 +84,8 @@ mkswap /dev/sda2            # swap
 ```
 
 ## Root and swap partition
+
+[Handbook](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Disks#Activating_the_swap_partition)
 
 Activate swap
 ```bash
@@ -91,7 +99,11 @@ mkdir --parents /mnt/gentoo && mount /dev/sda3 /mnt/gentoo
 
 # Install stage tarball
 
+[Handbook](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Stage)
+
 ## Update date and time
+
+[Handbook](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Stage#Setting_the_date_and_time)
 
 If the live medium is somehow off.
 
@@ -106,7 +118,9 @@ If the live medium is somehow off.
 
 ## Download tarball
 
-[Will go with amd64, multilib, openrc](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Stage#Choosing_a_stage_tarball)
+- [Handbook](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Stage#Choosing_a_stage_tarball)
+- [stage3 for amd64, openrc, multilib](https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/20210509T214503Z/stage3-amd64-20210509T214503Z.tar.xz)
+- [mirrors](https://www.gentoo.org/downloads/mirrors/)
 
 ```bash
 wget ${LINK}
@@ -116,6 +130,8 @@ wget ${LINK}
 
 ## Unpack tarball
 
+[Handbook](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Stage#Setting_the_date_and_time)
+
 - Gentoo live cd
   ```bash
   tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner -C /mnt/gentoo 
@@ -124,3 +140,32 @@ wget ${LINK}
   ```bash
   tar --numeric-owner --xattrs -xvJpf stage3-*.tar.xz -C /mnt/gentoo 
   ```
+  
+# Installing the Gentoo base system 
+
+[Handbook](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Base)
+
+## Mounting the necessary filesystems
+
+[Handbook](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Base#Mounting_the_necessary_filesystems)
+
+`/proc`
+- Gentoo Live CD
+  ```bash
+  mount --types proc /proc /mnt/gentoo/proc 
+  ```
+- [non Gentoo medium](https://wiki.gentoo.org/wiki/Installation_alternatives#Installation_instructions)
+  ```bash
+  mount -o bind /proc /mnt/gentoo/proc
+  ```
+  
+`/sys`
+```bash
+mount --rbind /sys /mnt/gentoo/sys 
+mount --make-rslave /mnt/gentoo/sys 
+```
+
+`/dev`
+```bash
+mount --rbind /dev /mnt/gentoo/dev 
+    

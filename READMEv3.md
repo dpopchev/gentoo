@@ -258,6 +258,27 @@ emerge -av vim
   man make.conf
   ```
 
+## Accept keywords
+
+[Gentoo wiki](https://wiki.gentoo.org/wiki/ACCEPT_KEYWORDS)
+
+Global unstable keywords
+```bash
+grep -Pi accept_keywords /etc/portage/make.conf
+ACCEPT_KEYWORDS="~amd64"
+```
+
+## Accept license
+
+[Handbook](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Base#Optional:_Configuring_the_ACCEPT_LICENSE_variable)
+[Gentoo wiki](https://wiki.gentoo.org/wiki//etc/portage/make.conf#ACCEPT_LICENSE)
+
+Global unstable keywords
+```bash
+grep -Pi accept_license /etc/portage/make.conf
+ACCEPT_LICENSE="-* @FREE"
+```
+
 ## Optimization flags
 
 - [Handbook](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Stage#CFLAGS_and_CXXFLAGS)
@@ -265,9 +286,9 @@ emerge -av vim
 - [Gentoo safe cflags wiki](https://wiki.gentoo.org/wiki/Safe_CFLAGS)
 
 Flags:
-- [`-O`](https://wiki.gentoo.org/wiki/GCC_optimization#-O)  
+- [`-O2`](https://wiki.gentoo.org/wiki/GCC_optimization#-O)  
   
-  `-O` controls the overall level of optimization, `-O2` is *recommended* level of optimization unless the system has special needs
+  `-O2` controls the overall level of optimization, `-O2` is *recommended* level of optimization unless the system has special needs
 
 - [`-pipe`](https://wiki.gentoo.org/wiki/GCC_optimization#-pipe)
   
@@ -323,7 +344,7 @@ Features:
 
   Create a backup of each package before it is unmerged (if a binary package of the same version does not already exist)
   
-[A note on build package emerge counterpart: enabling feature will prevent emerge **--ignore-default-opts** take effect](https://forums.gentoo.org/viewtopic-t-1075024-start-0.html)
+
 
 End result:
 ```bash
@@ -333,7 +354,9 @@ FEATURE="${FEATURE} downgrade-backup"
 FEATURE="${FEATURE} unmerge-backup"
 ```
 
-**NOTE:** interesting to implement `buildpkg` or `buildsyspkg`
+**NOTE:** 
+- interesting to implement `buildpkg` or `buildsyspkg`
+- [A note on build package emerge counterpart: enabling feature will prevent emerge **--ignore-default-opts** take effect](https://forums.gentoo.org/viewtopic-t-1075024-start-0.html)
 
 ## Emerge default options
 
@@ -389,6 +412,7 @@ EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} --jobs=${NPROC} --load-average=${NPR
 - [Optimal value makeopts](https://blogs.gentoo.org/ago/2013/01/14/makeopts-jcore-1-is-not-the-best-optimization/)
 - [Optimal value makeopts and emerge paralllels](https://www.preney.ca/paul/archives/341)
 
+Parallel build:
 - `MAKEOPTS`
 
   defines how many parallel compilations should occur when installing a package
@@ -397,4 +421,105 @@ End result:
 ```
 grep -P MAKEOPTS /etc/make.conf
 MAKEOPTS="--jobs=${NPROC} --load-average=${NPROC}"
+```
+
+## Mirrors
+
+- [Handbook](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Base#Optional:_Selecting_mirrors)
+- [Gentoo wiki](https://wiki.gentoo.org/wiki/Mirrorselect#Select_the_Gentoo_source_mirror.28s.29)
+
+```bash
+emerge --oneshot mirrorselect
+mirrorselect -s5 -b100 -D # find top 5 fastes
+```
+
+## Localization
+
+### Timezone
+
+[Handbook](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Base#Timezone)
+
+OpenRC:
+```bash
+ls /usr/share/zoneinfo
+echo "Europe/Sofia" > /etc/timezone
+emerge --config sys-libs/timezone-data
+```
+
+### Locale generation
+
+- [Handbook](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Base#Configure_locales)
+- [Gentoo wiki](https://wiki.gentoo.org/wiki/Localization/Guide#LINGUAS)
+
+See supported locales
+```bash
+less  /usr/share/i18n/SUPPORTED
+```
+
+Add target locales
+```bash
+grep -iP 'en_US|bg_BG' /usr/share/i18n/SUPPORTED >> /etc/locale.gen
+```
+
+Generate
+```bash
+locale-gen
+```
+
+Select
+```bash
+eselect locale list
+eselect locale set 4
+eselect locale show
+env-update
+source /etc/profile
+export PS1="(chroot) ${PS1}
+```
+
+Use `L10N` in to specify extra localization support, commonly used for downloads of additional language packs by packages. [Gentoo wiki](https://wiki.gentoo.org/wiki/Localization/Guide#L10N)
+
+## Use 
+
+[Handbook](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Base#Configuring_the_USE_variable)
+
+## General tools
+
+- [Useful portage tools](https://wiki.gentoo.org/wiki/Useful_Portage_tools)
+- [Gentoolkit](https://wiki.gentoo.org/wiki/Gentoolkit#euse)
+- [eix](https://wiki.gentoo.org/wiki/Eix)
+- [Elogv](https://wiki.gentoo.org/wiki/Elogv)
+- [Equery](https://wiki.gentoo.org/wiki/Equery)
+- [genlop](https://wiki.gentoo.org/wiki/Genlop)
+- [q applets](https://wiki.gentoo.org/wiki/Q_applets)
+
+```bash
+emerge -av app-portage/gentoolkit app-portage/eix app-portage/elogv app-portage/genlop app-portage/portage-utils
+```
+
+# Profile
+
+[Handbook](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Base#Choosing_the_right_profile)
+
+A profile is a building block for any Gentoo system. Not only does it specify default values for USE, CFLAGS, and other important variables, it also locks the system to a certain range of package versions
+
+```bash
+eselect profile list
+eselect profile set 5 # generic desktop
+eselect profile show
+```
+
+# Pre kernel config
+
+[Handbook](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Base#Updating_the_.40world_set)
+
+Better update world set after setting profile.
+
+Play with `euse` or others to fine tune default USE flags and similar, e.g.
+
+```bash
+euse -D gnome kde plasma # drop support for main DE if they will not be used
+```
+
+```bash
+emerge --ask --verbose --update --deep --newuse @world
 ```

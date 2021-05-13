@@ -210,9 +210,20 @@ cp --dereference /etc/resolv.conf /mnt/gentoo/etc/
   export PS1="(chroot) $PS1" 
   ```
 
-[Mounting the corresponding partition](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Base#Mounting_the_boot_partition)
+[Mounting partitions to end points](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Base#Mounting_the_boot_partition)
 ```bash
 mount /dev/sda1 /boot
 ```
 
+**NOTE** Subsequent commands assume working in the chroot env, if not otherwise said.
+
 # Make conf
+
+- [Handbook](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Stage#Configuring_compile_options)
+- [Gentoo wiki](https://wiki.gentoo.org/wiki//etc/portage/make.conf)
+- [Gentoo dev manual](https://devmanual.gentoo.org/eclass-reference/make.conf/index.html)
+- [man](https://dev.gentoo.org/~zmedico/portage/doc/man/make.conf.5.html)
+- Local commented listing of all variables
+  ```bash
+  less /usr/share/portage/config/make.conf.example
+  ```

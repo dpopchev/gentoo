@@ -6,6 +6,7 @@ Main resources:
 - [Handbook amd64](https://wiki.gentoo.org/wiki/Handbook:AMD64)
 - [Gentoo downloads](https://www.gentoo.org/downloads/)
 - [Gentoo mirrors](https://www.gentoo.org/downloads/mirrors)
+- [Gentoo installation alternatives](https://wiki.gentoo.org/wiki/Installation_alternatives)
 
 # Configuring the network 
 
@@ -168,4 +169,50 @@ mount --make-rslave /mnt/gentoo/sys
 `/dev`
 ```bash
 mount --rbind /dev /mnt/gentoo/dev 
-    
+mount --make-rslave /mnt/gentoo/dev 
+```
+
+`/dev/shm` for non Gentoo Live CD 
+```bash
+test -L /dev/shm && rm /dev/shm && mkdir /dev/shm 
+mount --types tmpfs --options nosuid,nodev,noexec shm /dev/shm 
+chmod 1777 /dev/shm
+```
+
+`/dev/shm` for Ubuntu live cd [note here](https://wiki.gentoo.org/wiki/Installation_alternatives#Installation_instructions) regarding [Python bug for broken `sem_open()`](https://bugs.gentoo.org/496328)
+```bash
+mount --rbind /run/shm /mnt/gentoo/run/shm
+```
+
+## Copy DNS info
+
+[Handbook](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Base#Copy_DNS_info)
+
+```bash
+cp --dereference /etc/resolv.conf /mnt/gentoo/etc/
+```
+
+## Entering the new environment
+
+[Handbook](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Base#Entering_the_new_environment)
+
+- Gentoo Live CD
+  ```bash
+  chroot /mnt/gentoo /bin/bash 
+  source /etc/profile 
+  export PS1="(chroot) ${PS1}"
+  ```
+- [non Gentoo Live CD](https://wiki.gentoo.org/wiki/Installation_alternatives#Installation_instructions)
+  ```bash
+  chroot /mnt/gentoo /bin/env -i TERM=$TERM /bin/bash 
+  env-update 
+  source /etc/profile 
+  export PS1="(chroot) $PS1" 
+  ```
+
+[Mounting the corresponding partition](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Base#Mounting_the_boot_partition)
+```bash
+mount /dev/sda1 /boot
+```
+
+# Make conf

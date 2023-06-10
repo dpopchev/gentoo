@@ -43,3 +43,14 @@ mkdir -p /mnt/gentoo
 mount /dev/sda3 /mnt/gentoo
 ```
 
+### Install stage tarball
+
+```
+chrony -q # sync time
+```
+
+```
+cd /mnt/gentoo
+wget https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/20230604T170201Z/stage3-amd64-openrc-20230604T170201Z.tar.xz
+```
+

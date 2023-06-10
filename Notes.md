@@ -30,3 +30,12 @@ Assumptions: `GPT` partition table for `UEFI`.
 | /dev/sda2 | linux-swap | ~ RAM size       | Linux swap     |       |
 | /dev/sda3 | ext4       | rest of the disk | Root           |       |
 
+Activate swap `swapon /dev/sda2`
+
+Mount root partition
+
+```
+mkdir -p /mnt/gentoo
+mount /dev/sda3 /mnt/gentoo
+```
+

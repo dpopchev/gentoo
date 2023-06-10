@@ -112,7 +112,3 @@ export PS1="(chroot) ${PS1}"
 ```
 mount /dev/sda1 /boot
 ```
-
-```
-mount /dev/
-

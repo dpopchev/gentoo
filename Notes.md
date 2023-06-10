@@ -52,5 +52,6 @@ chronyd -q # sync time
 ```
 cd /mnt/gentoo
 wget https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/20230604T170201Z/stage3-amd64-openrc-20230604T170201Z.tar.xz
+tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner
 ```
 

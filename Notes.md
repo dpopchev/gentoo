@@ -65,6 +65,6 @@ tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner
 ### Find mirrors
 
 ```
-cd /mnt/gentoo/etc/portage/make.conf
+cd /mnt/gentoo/etc/portage
 mirrorselect -D -s5 -o > mirrors # verify and copy into make.conf
 ```

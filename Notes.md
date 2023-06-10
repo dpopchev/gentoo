@@ -10,10 +10,17 @@ Installation nodtes.
 
 Assuming `Gentoo` live usb for **amd64**.
 
-```bash
+```
 sudo su
 passwd # change root password
 passwd gentoo # change active user password
+```
+
+Disable system beep
+```
+xset -b
+xset b off
+xset b 0 0 0
 ```
 
 **work in progress**

@@ -68,3 +68,31 @@ tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner
 cd /mnt/gentoo/etc/portage
 mirrorselect -D -s5 -o > mirrors # verify and copy into make.conf
 ```
+
+### Gentoo ebuild repository
+
+```
+mkdir --parents /mnt/gentoo/etc/portage/repos.conf
+cp /mnt/gentoo/usr/share/portage/config/repos.conf /mnt/gentoo/etc/portage/repos.conf/gentoo.conf
+```
+
+### Copy DNS info
+
+```
+cp --dereference /etc/resolv.conf /mnt/gentoo/etc/
+```
+
+### Mount file systems
+
+```
+mount --types proc /proc /mnt/gentoo/proc 
+mount --rbind /sys /mnt/gentoo/sys 
+mount --make-rslave /mnt/gentoo/sys 
+mount --rbind /dev /mnt/gentoo/dev 
+mount --make-rslave /mnt/gentoo/dev 
+mount --bind /run /mnt/gentoo/run 
+mount --make-slave /mnt/gentoo/run 
+```
+
+
+

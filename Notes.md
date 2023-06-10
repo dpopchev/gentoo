@@ -94,5 +94,25 @@ mount --bind /run /mnt/gentoo/run
 mount --make-slave /mnt/gentoo/run 
 ```
 
+### Change root
 
+```
+chroot /mnt/gentoo /bin/bash 
+```
+
+```
+source /etc/profile
+export PS1="(chroot) ${PS1}"
+```
+
+**Assumming we are into new root from now one**
+
+### Mount boot
+
+```
+mount /dev/sda1 /boot
+```
+
+```
+mount /dev/
 

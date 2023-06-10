@@ -115,7 +115,7 @@ mount /dev/sda1 /boot
 
 ### Portage configuration
 
-Assure to check against `emerge --info`
+Check variable values aginst `emerge --info`
 
 Select a profile
 

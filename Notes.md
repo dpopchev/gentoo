@@ -62,3 +62,9 @@ wget https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/2023060
 tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner
 ```
 
+### Find mirrors
+
+```
+cd /mnt/gentoo/etc/portage/make.conf
+mirrorselect -D -s5 -o > mirrors # verify and copy into make.conf
+```

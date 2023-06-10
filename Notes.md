@@ -187,3 +187,28 @@ CPU_FLAGS_X86="aes avx avx2 f16c fma3 mmx mmxext pclmul popcnt rdrand sse sse2 s
 # Please keep this setting intact when reporting bugs.
 LC_MESSAGES=C.utf8
 ```
+
+Update word set
+
+```
+emerge --ask --verbose --update --deep --newuse @world
+```
+
+### Localization
+
+```
+ls /usr/share/zoneinfo
+echo "$Region/$City >> /etc/timezone
+emerge --config sys-libs/timezone-data
+```
+
+```
+grep $TARGET_LANGS /usr/share/i18n/SUPPORTED >> /etc/locale.gen
+local-gen
+eselect locale list
+eselect locale set $taget_locale
+```
+
+```
+env-update && source /etc/profile && export PS1="(chroot) ${PS1}"
+```

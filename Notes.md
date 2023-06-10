@@ -46,7 +46,7 @@ mount /dev/sda3 /mnt/gentoo
 ### Install stage tarball
 
 ```
-chrony -q # sync time
+chronyd -q # sync time
 ```
 
 ```

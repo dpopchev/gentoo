@@ -129,3 +129,9 @@ Select a profile
 eselect profile list
 eselect profile set 5 # current generic desktop
 ```
+
+```
+emerge --oneshot app-portage/cpuid2cpuflags
+cd /etc/portage
+cpuid2cpuflags > cpu_flags # merge into make.conf
+```

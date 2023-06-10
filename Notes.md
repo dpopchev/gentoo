@@ -112,3 +112,14 @@ export PS1="(chroot) ${PS1}"
 ```
 mount /dev/sda1 /boot
 ```
+
+### Portage configuration
+
+Assure to check against `emerge --info`
+
+Select a profile
+
+```
+eselect profile list
+eselect profile set 5 # current generic desktop
+```

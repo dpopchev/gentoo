@@ -115,6 +115,12 @@ mount /dev/sda1 /boot
 
 ### Portage configuration
 
+Get ebuild repository
+
+```
+emerge-webrsync
+```
+
 Check variable values aginst `emerge --info`
 
 Select a profile

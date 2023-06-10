@@ -135,3 +135,55 @@ emerge --oneshot app-portage/cpuid2cpuflags
 cd /etc/portage
 cpuid2cpuflags > cpu_flags # merge into make.conf
 ```
+
+Sample `make.conf`
+
+```
+# example setup: /usr/share/portage/config/make.conf.example
+# online resource: https://wiki.gentoo.org/wiki//etc/portage/make.conf
+
+# These settings were set by the catalyst build script that automatically
+# built this stage.
+# Please consult /usr/share/portage/config/make.conf.example for a more
+# detailed example.
+# see march native flags: gcc -v -E -x c /dev/null -o /dev/null -march=native 2>&1 | grep /cc1
+COMMON_FLAGS="-O2 -pipe -march=native"
+CFLAGS="${COMMON_FLAGS}"
+CXXFLAGS="${COMMON_FLAGS}"
+FCFLAGS="${COMMON_FLAGS}"
+FFLAGS="${COMMON_FLAGS}"
+
+# TODO see buildpkg
+FEATURES="candy downgrade-backup unmerge-backup"
+
+GENTOO_MIRRORS="http://tux.rainside.sk/gentoo/ http://ftp-stud.hs-esslingen.de/pub/Mirrors/gentoo/ http://ftp.belnet.be/pub/rsync.gentoo.org/gentoo/ http://ftp.gwdg.de/pub/linux/gentoo/ http://mirror.bytemark.co.uk/gentoo/"
+
+# see lspu or nproc
+MAKEOPTS="--jobs 4 --load-average 3.75"
+
+# each emerge job starts an makeopts job, hence jobs load increases; hopefully it balacnes trough load-avg opt
+# TODO in tandme with buildpkg feature, see usepkg=y, binpkg-changed-deps=y, binpkg-respect-use=y
+EMERGE_DEFAULT_OPTS="--jobs 4 --load-average 3.75 --quiet y --verbose y --keep-going y --tree"
+
+USE="bash-completion -bluetooth branding -dvd -dvdr -emacs -gnome -gnome-keyring -kde -wayland -zsh-completion"
+
+ACCEPT_LICENSE="-* @FREE"
+
+# LINGUAS
+# USE_EXPAND
+
+# CPU_FLAGS_*
+CPU_FLAGS_X86="aes avx avx2 f16c fma3 mmx mmxext pclmul popcnt rdrand sse sse2 sse3 sse4_1 sse4_2 ssse3"
+
+# INPUT_DEVICES
+# L10N
+# VIDEO_CARDS
+
+# lscpu cpu count or nproc
+
+# NOTE: This stage was built with the bindist Use flag enabled
+
+# This sets the language of build output to English.
+# Please keep this setting intact when reporting bugs.
+LC_MESSAGES=C.utf8
+```

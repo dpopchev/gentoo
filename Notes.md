@@ -163,7 +163,7 @@ MAKEOPTS="--jobs 4 --load-average 3.75"
 
 # each emerge job starts an makeopts job, hence jobs load increases; hopefully it balacnes trough load-avg opt
 # TODO in tandme with buildpkg feature, see usepkg=y, binpkg-changed-deps=y, binpkg-respect-use=y
-EMERGE_DEFAULT_OPTS="--jobs 4 --load-average 3.75 --quiet y --verbose y --keep-going y --tree"
+EMERGE_DEFAULT_OPTS="--jobs 4 --load-average 3.75 --quiet y --verbose y --keep-going y --tree --autounmask-write"
 
 USE="bash-completion -bluetooth branding -dvd -dvdr -emacs -gnome -gnome-keyring -kde -wayland -zsh-completion"
 
@@ -186,6 +186,11 @@ CPU_FLAGS_X86="aes avx avx2 f16c fma3 mmx mmxext pclmul popcnt rdrand sse sse2 s
 # This sets the language of build output to English.
 # Please keep this setting intact when reporting bugs.
 LC_MESSAGES=C.utf8
+```
+
+```
+# for emerge --autounmask-write option
+for d in /etc/portage/package.*; do touch $d/zzz_autounmask; done 
 ```
 
 Update word set

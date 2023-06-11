@@ -245,7 +245,8 @@ eselect kernel set $N
 
 ```
 cd /usr/src/linux
-make localyesconfig
+# make localyesconfig
+make localmodconfig
 make -j4 && make modules_install  && make install
 ```
 

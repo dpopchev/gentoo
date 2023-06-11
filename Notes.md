@@ -250,6 +250,15 @@ make localmodconfig
 make -j4 && make modules_install  && make install
 ```
 
+### Configuring the system
+
+```
+# sample content of fstab
+/dev/sda1		/boot		vfat		noauto,noatime	1 2
+/dev/sda3		/		ext4		noatime		0 1
+/dev/sda2		none		swap		sw		0 0
+```
+
 ### Some software
 
 - vim

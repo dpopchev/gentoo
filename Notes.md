@@ -294,3 +294,8 @@ euse -E logrotate -p app-admin/sysklogd
 emerge -a sysklogd
 rc-update add sysklogd default
 ```
+
+```
+emerge --ask net-misc/chrony
+rc-update add chronyd default
+```

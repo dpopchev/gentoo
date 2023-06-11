@@ -197,14 +197,23 @@ emerge --ask --verbose --update --deep --newuse @world
 ### Localization
 
 ```
-ls /usr/share/zoneinfo
-echo "$Region/$City >> /etc/timezone
+ls /usr/share/zoneinfo # check timzones
+echo "$Region/$City > /etc/timezone # choose timezone
+```
+
+```
 emerge --config sys-libs/timezone-data
 ```
 
 ```
 grep $TARGET_LANGS /usr/share/i18n/SUPPORTED >> /etc/locale.gen
-local-gen
+```
+
+```
+locale-gen
+```
+
+```
 eselect locale list
 eselect locale set $taget_locale
 ```

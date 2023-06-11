@@ -239,14 +239,13 @@ emerge -av gentoo-sources
 ```
 
 ```
+eselect kernel list
+eselect kernel set $N
+```
+
+```
 cd /usr/src/linux
-```
-
-```
 make localyesconfig
-```
-
-```
 make -j4 && make modules_install  && make install
 ```
 

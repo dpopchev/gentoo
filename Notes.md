@@ -227,6 +227,13 @@ eselect locale set $taget_locale
 env-update && source /etc/profile && export PS1="(chroot) ${PS1}"
 ```
 
+### Kernel
+
+```
+echo "sys-kernel/linux-firmware linux-fw-redistributable no-source-code" >> /etc/portage/package.licence
+emerge --ask sys-kernel/linux-firmware
+```
+
 ### Some software
 
 - vim

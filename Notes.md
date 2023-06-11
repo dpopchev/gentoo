@@ -234,6 +234,22 @@ echo "sys-kernel/linux-firmware linux-fw-redistributable no-source-code" >> /etc
 emerge --ask sys-kernel/linux-firmware
 ```
 
+```
+emerge -av gentoo-sources
+```
+
+```
+cd /usr/src/linux
+```
+
+```
+make localyesconfig
+```
+
+```
+make -j4 && make modules_install  && make install
+```
+
 ### Some software
 
 - vim

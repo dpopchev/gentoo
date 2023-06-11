@@ -259,8 +259,16 @@ make -j4 && make modules_install  && make install
 /dev/sda2		none		swap		sw		0 0
 ```
 
-### Some software
+```
+echo tux > /etc/hostname
+```
 
-- vim
-- neovim
-- bash-completion
+```
+emerge -av gentoolkit
+```
+
+```
+euse -E networkmanager
+emerge --ask --changed-use --deep @world
+emerge --ask net-misc/networkmanager
+```

@@ -221,3 +221,9 @@ eselect locale set $taget_locale
 ```
 env-update && source /etc/profile && export PS1="(chroot) ${PS1}"
 ```
+
+### Some software
+
+- vim
+- neovim
+- bash-completion

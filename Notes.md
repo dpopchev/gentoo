@@ -252,6 +252,17 @@ make -j4 && make modules_install  && make install
 
 ### Configuring the system
 
+Check out password policies in `/etc/security/passwdc.conf`
+
+```
+passwd # set root password
+```
+
+```
+useradd -g users -G wheel,portage,audio,video,usb -m ${USERNAME}
+passwd ${USERNAME} 
+```
+
 ```
 # sample content of fstab
 /dev/sda1		/boot		vfat		noauto,noatime	1 2
@@ -271,4 +282,9 @@ emerge -av gentoolkit
 euse -E networkmanager
 emerge --ask --changed-use --deep @world
 emerge --ask net-misc/networkmanager
+rc-update add NetworkManager default
+```
+
+```
+gpasswd -a ${USER} plugdev
 ```

@@ -117,6 +117,8 @@ Sample `/etc/portage/make.conf`
 # example setup: /usr/share/portage/config/make.conf.example
 # online resource: https://wiki.gentoo.org/wiki//etc/portage/make.conf
 
+ACCEPTED_KEYWORDS='~amd64'
+
 # These settings were set by the catalyst build script that automatically
 # built this stage.
 # Please consult /usr/share/portage/config/make.conf.example for a more
@@ -186,17 +188,16 @@ cpuid2cpuflags > cpu_flags # merge into make.conf
 cd /mnt/gentoo/etc/portage && mirrorselect -D -s5 -o > mirrors # merge into make.conf
 ```
 
-Update word set
+```
+eselect profile list 
+# eselect profile set $NUMBER
+```
+
+### Configure system
 
 ```
-emerge --ask --verbose --update --deep --newuse @world
-```
-
-### Localization
-
-```
-ls /usr/share/zoneinfo # check timzones
-echo "$Region/$City > /etc/timezone # choose timezone
+ls /usr/share/zoneinfo # find timezone
+# echo $Region/$City > /etc/timezone
 ```
 
 ```
@@ -218,6 +219,29 @@ eselect locale set $taget_locale
 
 ```
 env-update && source /etc/profile && export PS1="(chroot) ${PS1}"
+```
+
+Edit `/etc/fstab'
+
+```
+/dev/sda1		/boot		vfat		noauto,noatime	1 2
+/dev/sda3		/		ext4		noatime		0 1
+/dev/sda2		none		swap		sw		0 0
+```
+
+```
+[[ ! -z $DESIRED_HOSTNAME ]] && echo ${DESIRED_HOSTNAME} > /etc/hostname
+```
+
+Check out password policies in `/etc/security/passwdc.conf`
+
+```
+passwd # set root password
+```
+
+```
+useradd -g users -G wheel,portage,audio,video,usb -m ${USERNAME}
+passwd ${USERNAME} 
 ```
 
 ### Kernel
@@ -245,27 +269,11 @@ make -j4 && make modules_install  && make install
 
 ### Configuring the system
 
-Check out password policies in `/etc/security/passwdc.conf`
 
-```
-passwd # set root password
-```
 
-```
-useradd -g users -G wheel,portage,audio,video,usb -m ${USERNAME}
-passwd ${USERNAME} 
-```
 
-```
-# sample content of fstab
-/dev/sda1		/boot		vfat		noauto,noatime	1 2
-/dev/sda3		/		ext4		noatime		0 1
-/dev/sda2		none		swap		sw		0 0
-```
 
-```
-echo tux > /etc/hostname
-```
+
 
 ```
 emerge -av gentoolkit

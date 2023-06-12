@@ -2,11 +2,12 @@
 
 Installation nodtes. 
 
-**work in progress**
+_work in progress_
  
 ## Installation outline
 
-[Handbook](https://wiki.gentoo.org/wiki/Handbook:AMD64) steps with in detail view. 
+- [Handbook](https://wiki.gentoo.org/wiki/Handbook:AMD64)
+- [Quick Checklist](https://wiki.gentoo.org/wiki/Quick_Installation_Checklist) 
 
 Assuming `Gentoo` live usb for **amd64**.
 
@@ -23,7 +24,7 @@ xset b off
 xset b 0 0 0
 ```
 
-**work in progress**
+_work in progress_
 
 ### Prepare the disks
 

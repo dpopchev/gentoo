@@ -103,6 +103,10 @@ emerge-webrsync
 ```
 
 ```
+emerge -av vim
+```
+
+```
 eselect profile list
 eselect profile set 5 # current generic desktop
 ```

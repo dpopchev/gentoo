@@ -11,12 +11,17 @@ _work in progress_
 
 Assuming `Gentoo` live usb for **amd64**.
 
+
+### Preparation
+
 ```
 sudo su
 ```
 
 ```
 passwd # change root password
+```
+
 ```
 passwd gentoo # change active user password
 ```

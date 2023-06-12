@@ -56,12 +56,6 @@ wget https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/2023060
 tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner
 ```
 
-### Find mirrors
-
-```
-cd /mnt/gentoo/etc/portage && mirrorselect -D -s5 -o > mirrors # verify and copy into make.conf
-```
-
 ### Gentoo ebuild repository
 
 ```
@@ -100,7 +94,7 @@ chroot /mnt/gentoo /bin/bash
 source /etc/profile && export PS1="(chroot) ${PS1}"
 ```
 
-_Assumming we are into new root from now one_
+_Next steps are assuming work into chroot_
 
 ### Portage configuration
 
@@ -113,13 +107,7 @@ eselect profile list
 eselect profile set 5 # current generic desktop
 ```
 
-```
-emerge --oneshot app-portage/cpuid2cpuflags
-cd /etc/portage
-cpuid2cpuflags > cpu_flags # merge into make.conf
-```
-
-Sample `make.conf`
+Sample `/etc/portage/make.conf`
 
 ```
 # example setup: /usr/share/portage/config/make.conf.example
@@ -139,16 +127,27 @@ FFLAGS="${COMMON_FLAGS}"
 # TODO see buildpkg
 FEATURES="candy downgrade-backup unmerge-backup"
 
-GENTOO_MIRRORS="http://tux.rainside.sk/gentoo/ http://ftp-stud.hs-esslingen.de/pub/Mirrors/gentoo/ http://ftp.belnet.be/pub/rsync.gentoo.org/gentoo/ http://ftp.gwdg.de/pub/linux/gentoo/ http://mirror.bytemark.co.uk/gentoo/"
+# GENTOO_MIRRORS
 
-# see lspu or nproc
-MAKEOPTS="--jobs 4 --load-average 3.75"
+# get using lspu or nproc
+NPROC=4
+LOAD_AVG=3.75 # ~ 0.9 of NPROC
+
+MAKEOPTS="--jobs ${NPROC} --load-average ${LOAD_AVG}"
 
 # each emerge job starts an makeopts job, hence jobs load increases; hopefully it balacnes trough load-avg opt
-# TODO in tandme with buildpkg feature, see usepkg=y, binpkg-changed-deps=y, binpkg-respect-use=y
-EMERGE_DEFAULT_OPTS="--jobs 4 --load-average 3.75 --quiet y --verbose y --keep-going y --tree --autounmask-write"
+# TODO idea to explore is buildpkg feature, see usepkg=y, binpkg-changed-deps=y, binpkg-respect-use=y
+EMERGE_DEFAULT_OPTS="--jobs ${NPROC} --load-average ${LOAD_AVG} --quiet y --verbose y --keep-going y --tree --autounmask-write"
 
-USE="bash-completion -bluetooth branding -dvd -dvdr -emacs -gnome -gnome-keyring -kde -wayland -zsh-completion"
+USE_BASH="bash-completion -zsh-completion"
+USE_INTERFACES="-bluetooth -dvd -dvdr"
+USE_GENTOO="branding"
+USE_VIM="-emacs"
+USE_DE="-gnome -gnome-keyring -kde"
+USE_X="-wayland"
+USE_APPENDED=""
+
+USE="${USE_BASH} ${USE_INTERFACES} ${USE_GENTOO} ${USE_VIM} ${USE_DE} ${USE_X} ${USE_APPENDED}"
 
 ACCEPT_LICENSE="-* @FREE"
 
@@ -156,13 +155,10 @@ ACCEPT_LICENSE="-* @FREE"
 # USE_EXPAND
 
 # CPU_FLAGS_*
-CPU_FLAGS_X86="aes avx avx2 f16c fma3 mmx mmxext pclmul popcnt rdrand sse sse2 sse3 sse4_1 sse4_2 ssse3"
 
 # INPUT_DEVICES
 # L10N
 # VIDEO_CARDS
-
-# lscpu cpu count or nproc
 
 # NOTE: This stage was built with the bindist Use flag enabled
 
@@ -174,6 +170,16 @@ LC_MESSAGES=C.utf8
 ```
 # for emerge --autounmask-write option
 for d in /etc/portage/package.*; do touch $d/zzz_autounmask; done 
+```
+
+```
+emerge --oneshot app-portage/cpuid2cpuflags && \
+cd /etc/portage && \
+cpuid2cpuflags > cpu_flags # merge into make.conf
+```
+
+```
+cd /mnt/gentoo/etc/portage && mirrorselect -D -s5 -o > mirrors # merge into make.conf
 ```
 
 Update word set

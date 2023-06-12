@@ -105,7 +105,7 @@ _Assumming we are into new root from now one_
 ### Portage configuration
 
 ```
-emerge-webrsync # && emerge -avuDN @world
+emerge-webrsync
 ```
 
 ```

@@ -51,10 +51,6 @@ mkdir -p /mnt/gentoo && mount /dev/sda3 /mnt/gentoo
 ### Install stage tarball
 
 ```
-chronyd -q # sync time
-```
-
-```
 cd /mnt/gentoo && \
 wget https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/20230604T170201Z/stage3-amd64-openrc-20230604T170201Z.tar.xz && \
 tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner
@@ -75,6 +71,10 @@ cp /mnt/gentoo/usr/share/portage/config/repos.conf /mnt/gentoo/etc/portage/repos
 ```
 
 ### Copy DNS info
+
+```
+chronyd -q # sync time
+```
 
 ```
 cp --dereference /etc/resolv.conf /mnt/gentoo/etc/

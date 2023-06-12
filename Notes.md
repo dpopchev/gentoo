@@ -193,7 +193,7 @@ eselect profile list
 # eselect profile set $NUMBER
 ```
 
-### Configure system
+### Configuring the system
 
 ```
 ls /usr/share/zoneinfo # find timezone
@@ -267,13 +267,17 @@ make localmodconfig
 make -j4 && make modules_install  && make install
 ```
 
-### Configuring the system
+### Bootloader
 
+```
+echo 'GRUB_PLATFORMS="efi-64"' >> /etc/portage/make.conf
+emerge --ask sys-boot/grub
+grub-install /dev/sda
+grub-install --target=x86_64-efi --efi-directory=/boot/efi
+grub-mkconfig -o /boot/grub/grub.cfg
+```
 
-
-
-
-
+### Finishing touches
 
 ```
 emerge -av gentoolkit
@@ -281,7 +285,6 @@ emerge -av gentoolkit
 
 ```
 euse -E networkmanager
-emerge --ask --changed-use --deep @world
 emerge --ask net-misc/networkmanager
 rc-update add NetworkManager default
 ```
@@ -294,17 +297,4 @@ gpasswd -a ${USER} plugdev
 euse -E logrotate -p app-admin/sysklogd
 emerge -a sysklogd
 rc-update add sysklogd default
-```
-
-```
-emerge --ask net-misc/chrony
-rc-update add chronyd default
-```
-
-```
-echo 'GRUB_PLATFORMS="efi-64"' >> /etc/portage/make.conf
-emerge --ask sys-boot/grub
-grub-install /dev/sda
-grub-install --target=x86_64-efi --efi-directory=/boot/efi
-grub-mkconfig -o /boot/grub/grub.cfg
 ```

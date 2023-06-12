@@ -100,19 +100,13 @@ chroot /mnt/gentoo /bin/bash
 source /etc/profile && export PS1="(chroot) ${PS1}"
 ```
 
-**Assumming we are into new root from now one**
+_Assumming we are into new root from now one_
 
 ### Portage configuration
 
-Get ebuild repository
-
 ```
-emerge-webrsync
+emerge-webrsync # && emerge -avuDN @world
 ```
-
-Check variable values aginst `emerge --info`
-
-Select a profile
 
 ```
 eselect profile list

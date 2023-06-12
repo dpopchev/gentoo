@@ -221,7 +221,7 @@ eselect locale set $taget_locale
 env-update && source /etc/profile && export PS1="(chroot) ${PS1}"
 ```
 
-Edit `/etc/fstab'
+Edit `/etc/fstab`
 
 ```
 /dev/sda1		/boot		vfat		noauto,noatime	1 2

@@ -17,7 +17,6 @@ sudo su
 
 ```
 passwd # change root password
-
 ```
 passwd gentoo # change active user password
 ```

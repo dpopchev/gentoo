@@ -59,14 +59,13 @@ tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner
 ### Find mirrors
 
 ```
-cd /mnt/gentoo/etc/portage
-mirrorselect -D -s5 -o > mirrors # verify and copy into make.conf
+cd /mnt/gentoo/etc/portage && mirrorselect -D -s5 -o > mirrors # verify and copy into make.conf
 ```
 
 ### Gentoo ebuild repository
 
 ```
-mkdir --parents /mnt/gentoo/etc/portage/repos.conf
+mkdir --parents /mnt/gentoo/etc/portage/repos.conf && \
 cp /mnt/gentoo/usr/share/portage/config/repos.conf /mnt/gentoo/etc/portage/repos.conf/gentoo.conf
 ```
 
@@ -80,19 +79,18 @@ chronyd -q # sync time
 cp --dereference /etc/resolv.conf /mnt/gentoo/etc/
 ```
 
-### Mount file systems
-
-```
-mount --types proc /proc /mnt/gentoo/proc 
-mount --rbind /sys /mnt/gentoo/sys 
-mount --make-rslave /mnt/gentoo/sys 
-mount --rbind /dev /mnt/gentoo/dev 
-mount --make-rslave /mnt/gentoo/dev 
-mount --bind /run /mnt/gentoo/run 
-mount --make-slave /mnt/gentoo/run 
-```
-
 ### Change root
+
+```
+mount --types proc /proc /mnt/gentoo/proc &&\ 
+mount --rbind /sys /mnt/gentoo/sys &&\
+mount --make-rslave /mnt/gentoo/sys &&\
+mount --rbind /dev /mnt/gentoo/dev &&\
+mount --make-rslave /mnt/gentoo/dev &&\
+mount --bind /run /mnt/gentoo/run &&\
+mount --make-slave /mnt/gentoo/run &&\
+mount /dev/sda1 /boot
+```
 
 ```
 chroot /mnt/gentoo /bin/bash 
@@ -104,12 +102,6 @@ export PS1="(chroot) ${PS1}"
 ```
 
 **Assumming we are into new root from now one**
-
-### Mount boot
-
-```
-mount /dev/sda1 /boot
-```
 
 ### Portage configuration
 

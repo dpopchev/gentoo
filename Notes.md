@@ -143,15 +143,15 @@ MAKEOPTS="--jobs ${NPROC} --load-average ${LOAD_AVG}"
 # TODO idea to explore is buildpkg feature, see usepkg=y, binpkg-changed-deps=y, binpkg-respect-use=y
 EMERGE_DEFAULT_OPTS="--jobs ${NPROC} --load-average ${LOAD_AVG} --quiet y --verbose y --keep-going y --tree --autounmask-write"
 
-USE_BASH="bash-completion -zsh-completion"
-USE_INTERFACES="-bluetooth -dvd -dvdr"
-USE_GENTOO="branding"
-USE_VIM="-emacs"
-USE_DE="-gnome -gnome-keyring -kde"
-USE_X="-wayland"
-USE_APPENDED=""
+BASH_FLAGS="bash-completion -zsh-completion"
+INTERFACE_FLAGS="-bluetooth -dvd -dvdr"
+GENTOO_FLAGS="branding"
+VIM_FLAGS="-emacs"
+DE_FLAGS="-gnome -gnome-keyring -kde"
+X_FLAGS="-wayland"
+APPENDED_FLAGS=""
 
-USE="${USE_BASH} ${USE_INTERFACES} ${USE_GENTOO} ${USE_VIM} ${USE_DE} ${USE_X} ${USE_APPENDED}"
+USE="${BASH_FLAGS} ${INTERFACE_FLAGS} ${GENTOO_FLAGS} ${VIM_FLAGS} ${D_FLAGSE} ${X_FLAGS} ${APPENDED_FLAGS}"
 
 ACCEPT_LICENSE="-* @FREE"
 

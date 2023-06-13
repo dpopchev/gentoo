@@ -103,12 +103,7 @@ emerge-webrsync
 ```
 
 ```
-emerge -av vim
-```
-
-```
-eselect profile list
-eselect profile set 5 # current generic desktop
+#emerge -av vim
 ```
 
 Sample `/etc/portage/make.conf`
@@ -205,7 +200,7 @@ emerge --config sys-libs/timezone-data
 ```
 
 ```
-grep $TARGET_LANGS /usr/share/i18n/SUPPORTED >> /etc/locale.gen
+# grep $TARGET_LANGS /usr/share/i18n/SUPPORTED >> /etc/locale.gen
 ```
 
 ```
@@ -214,7 +209,7 @@ locale-gen
 
 ```
 eselect locale list
-eselect locale set $taget_locale
+# eselect locale set $taget_locale
 ```
 
 ```
@@ -230,7 +225,7 @@ Edit `/etc/fstab`
 ```
 
 ```
-[[ ! -z $DESIRED_HOSTNAME ]] && echo ${DESIRED_HOSTNAME} > /etc/hostname
+# echo ${DESIRED_HOSTNAME} > /etc/hostname
 ```
 
 Check out password policies in `/etc/security/passwdc.conf`
@@ -240,14 +235,14 @@ passwd # set root password
 ```
 
 ```
-useradd -g users -G wheel,portage,audio,video,usb -m ${USERNAME}
-passwd ${USERNAME} 
+# useradd -g users -G wheel,portage,audio,video,usb -m ${USERNAME}
+# passwd ${USERNAME} 
 ```
 
 ### Kernel
 
 ```
-echo "sys-kernel/linux-firmware linux-fw-redistributable no-source-code" >> /etc/portage/package.licence
+echo "sys-kernel/linux-firmware linux-fw-redistributable no-source-code" >> /etc/portage/package.license && \
 emerge --ask sys-kernel/linux-firmware
 ```
 
@@ -257,13 +252,12 @@ emerge -av gentoo-sources
 
 ```
 eselect kernel list
-eselect kernel set $N
+# eselect kernel set $CHOICE
 ```
 
 ```
-cd /usr/src/linux
-# make localyesconfig
-make localmodconfig
+cd /usr/src/linux && \
+make localmodconfig && \
 make -j4 && make modules_install  && make install
 ```
 

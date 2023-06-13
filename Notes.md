@@ -292,3 +292,17 @@ euse -E logrotate -p app-admin/sysklogd
 emerge -a sysklogd
 rc-update add sysklogd default
 ```
+
+### Clean up
+
+```
+exit # from chroot
+```
+
+```
+cd && umount -R /mnt/gentoo
+```
+
+```
+reboot
+```

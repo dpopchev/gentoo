@@ -125,7 +125,7 @@ FFLAGS="${COMMON_FLAGS}"
 # space delimited list of dirs Portage will not blindly copy over new versions of files
 # CONFIG_PROTECT
 
-# Portage features; see /usr/share/portage/config/make.globals
+# Portage features, incremental; see /usr/share/portage/config/make.globals
 # TODO see buildpkg
 FEATURES="candy downgrade-backup unmerge-backup"
 

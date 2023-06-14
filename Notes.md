@@ -238,9 +238,9 @@ env-update && source /etc/profile && export PS1="(chroot) ${PS1}"
 Edit `/etc/fstab`
 
 ```
-/dev/sda1		/boot		vfat		noauto,noatime	1 2
-/dev/sda3		/		ext4		noatime		0 1
-/dev/sda2		none		swap		sw		0 0
+LABEL=boot		/boot		vfat		noauto,noatime	1 2
+LABEL=swap		none		swap		sw		0 0
+LABEL=gentoo		/		ext4		noatime		0 1
 ```
 
 ```

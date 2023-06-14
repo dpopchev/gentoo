@@ -108,7 +108,8 @@ Sample `/etc/portage/make.conf`
 # example setup: /usr/share/portage/config/make.conf.example
 # online resource: https://wiki.gentoo.org/wiki//etc/portage/make.conf
 
-ACCEPTED_KEYWORDS='~amd64'
+# go all in with bleeding edge
+ACCEPT_KEYWORDS="~amd64"
 
 # These settings were set by the catalyst build script that automatically
 # built this stage.
@@ -121,6 +122,10 @@ CXXFLAGS="${COMMON_FLAGS}"
 FCFLAGS="${COMMON_FLAGS}"
 FFLAGS="${COMMON_FLAGS}"
 
+# space delimited list of dirs Portage will not blindly copy over new versions of files
+# CONFIG_PROTECT
+
+# Portage features; see /usr/share/portage/config/make.globals
 # TODO see buildpkg
 FEATURES="candy downgrade-backup unmerge-backup"
 
@@ -130,11 +135,21 @@ FEATURES="candy downgrade-backup unmerge-backup"
 NPROC=4
 LOAD_AVG=3.75 # ~ 0.9 of NPROC
 
+# specify make arguments when pacakges are built
 MAKEOPTS="--jobs ${NPROC} --load-average ${LOAD_AVG}"
 
+# variable definiing entries appended to emerge
 # each emerge job starts an makeopts job, hence jobs load increases; hopefully it balacnes trough load-avg opt
 # TODO idea to explore is buildpkg feature, see usepkg=y, binpkg-changed-deps=y, binpkg-respect-use=y
-EMERGE_DEFAULT_OPTS="--jobs ${NPROC} --load-average ${LOAD_AVG} --quiet y --verbose y --keep-going y --tree --autounmask-write"
+EMERGE_DEFAULT_OPTS="--jobs ${NPROC} --load-average ${LOAD_AVG}"
+EMERGE_DEFAULT_OPTS="--quiet y --verbose y --keep-going y"
+EMERGE_DEFAULT_OTPS="--tree 
+EMERGE_DEFAULT_OPTS="--autounmask-write"
+
+# PORTAGE_SCHEDULING_POLICY; portage niceness
+# PORTAGE_TMPDIR; location of temporary files 
+# DISTDIR; location downloaded source code archives
+# PKGDIR; location store binary packages
 
 BASH_FLAGS="bash-completion -zsh-completion"
 INTERFACE_FLAGS="-bluetooth -dvd -dvdr"
@@ -144,20 +159,24 @@ DE_FLAGS="-gnome -gnome-keyring -kde"
 X_FLAGS="-wayland"
 APPENDED_FLAGS=""
 
+# system wide setting or deactivation of flags
 USE="${BASH_FLAGS} ${INTERFACE_FLAGS} ${GENTOO_FLAGS} ${VIM_FLAGS} ${D_FLAGSE} ${X_FLAGS} ${APPENDED_FLAGS}"
 
+# global software licenses definition
 ACCEPT_LICENSE="-* @FREE"
 
-# LINGUAS
-# USE_EXPAND
+# controls which localization files are built and installed via some gettext-based build systmes
+LINGUAS="en en_US"
 
-# CPU_FLAGS_*
+# CPU_FLAGS_*; use cpuid2cpuflags
 
-# INPUT_DEVICES
+INPUT_DEVICES="synaptics libinput"
+
+# see supported values: grep -i portuguese /var/db/repos/gentoo/profiles/desc/l10n.desc
+# determine which extra localization support to install
 # L10N
-# VIDEO_CARDS
 
-# NOTE: This stage was built with the bindist Use flag enabled
+VIDEO_CARDS="-* intel i965"
 
 # This sets the language of build output to English.
 # Please keep this setting intact when reporting bugs.
@@ -180,7 +199,7 @@ cpuid2cpuflags > cpu_flags # merge into make.conf
 ```
 
 ```
-cd /mnt/gentoo/etc/portage && mirrorselect -D -s5 -o > mirrors # merge into make.conf
+# cd /mnt/gentoo/etc/portage && mirrorselect -D -s5 -o > mirrors # merge into make.conf
 ```
 
 ```

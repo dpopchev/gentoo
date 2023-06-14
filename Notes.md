@@ -102,10 +102,6 @@ _Next steps are assuming work into chroot_
 emerge-webrsync
 ```
 
-```
-#emerge -av vim
-```
-
 Sample `/etc/portage/make.conf`
 
 ```
@@ -166,6 +162,10 @@ ACCEPT_LICENSE="-* @FREE"
 # This sets the language of build output to English.
 # Please keep this setting intact when reporting bugs.
 LC_MESSAGES=C.utf8
+```
+
+```
+#emerge -av vim
 ```
 
 ```

@@ -156,7 +156,7 @@ INTERFACE_FLAGS="-bluetooth -dvd -dvdr"
 GENTOO_FLAGS="branding"
 VIM_FLAGS="-emacs"
 DE_FLAGS="-gnome -gnome-keyring -kde"
-X_FLAGS="-wayland"
+X_FLAGS="X -wayland"
 APPENDED_FLAGS=""
 
 # system wide setting or deactivation of flags

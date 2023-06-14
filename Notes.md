@@ -299,10 +299,8 @@ emerge -av gentoolkit
 euse -E networkmanager
 emerge --ask net-misc/networkmanager
 rc-update add NetworkManager default
-```
-
-```
-gpasswd -a ${USER} plugdev
+# needed so non root users can manage system network connections
+# gpasswd -a ${USER} plugdev
 ```
 
 ```

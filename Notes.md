@@ -176,7 +176,7 @@ INPUT_DEVICES="synaptics libinput"
 # determine which extra localization support to install
 # L10N
 
-VIDEO_CARDS="-* intel i965"
+VIDEO_CARDS="intel i965"
 
 # This sets the language of build output to English.
 # Please keep this setting intact when reporting bugs.

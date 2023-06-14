@@ -34,11 +34,11 @@ Use `gparted`.
 
 Assumptions: `GPT` partition table for `UEFI`.
 
-| partition | filesystem | size             | description    | flags |
-|-----------|------------|------------------|----------------|-------|
-| /dev/sda1 | fat32      | 256M             | Boot partition | boot, esp |
-| /dev/sda2 | linux-swap | ~ RAM size       | Linux swap     |       |
-| /dev/sda3 | ext4       | rest of the disk | Root           |       |
+| partition | filesystem | size             | description    | flags | label |
+|-----------|------------|------------------|----------------|-------|-------|
+| /dev/sda1 | fat32      | 256M             | Boot partition | boot, esp | boot |
+| /dev/sda2 | linux-swap | ~ RAM size       | Linux swap     |       | swap |
+| /dev/sda3 | ext4       | rest of the disk | Root           |       | gentoo |
 
 ```
 swapon /dev/sda2

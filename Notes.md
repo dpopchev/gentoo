@@ -303,6 +303,11 @@ rc-update add NetworkManager default
 # gpasswd -a ${USER} plugdev
 ```
 
+```
+# save current wifi connection to reuse
+# sudo cat /etc/NetworkManager/system-connections/YOUR-SSID  
+```
+
 #### Local execution
 
 Save following scripts into local file to execute off the live environment.

@@ -152,8 +152,6 @@ EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} --autounmask-write"
 # system wide setting or deactivation of flags
 USE="bash-completion -zsh-completion -bluetooth -dvd -dvdr branding -emacs -gnome -gnome-keyring -kde X -wayland"
 
-USE="${BASH_FLAGS} ${INTERFACE_FLAGS} ${GENTOO_FLAGS} ${VIM_FLAGS} ${D_FLAGSE} ${X_FLAGS} ${APPENDED_FLAGS}"
-
 # global software licenses definition
 ACCEPT_LICENSE="-* @FREE"
 

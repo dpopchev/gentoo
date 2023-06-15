@@ -308,6 +308,13 @@ rc-update add NetworkManager default
 Save following scripts into local file to execute off the live environment.
 
 ```
+# nmcli dev status
+# nmcli radio wifi
+nmcli dev wifi list # see wifi networks
+# sudo nmcli dev wifi connect network-ssid password "network-password"
+```
+
+```
 emerge --ask --verbose --update --deep --newuse @world
 emerge -a sysklogd vim xorg-server display-manager-init lightdm i3
 ```
@@ -325,6 +332,10 @@ env-update && source /etc/profile
 rc-update add sysklogd default && \
 rc-update add dbus default && \
 rc-update add display-manager default
+```
+
+```
+reboot
 ```
 
 ### Clean up

@@ -282,6 +282,11 @@ emerge -av gentoolkit sudo
 ```
 
 ```
+visudo
+# edit so to allow members of wheel group execute any command
+```
+
+```
 euse -E networkmanager && \
 euse -E logrotate -p app-admin/sysklogd
 ```

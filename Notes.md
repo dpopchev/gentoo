@@ -108,9 +108,6 @@ Sample `/etc/portage/make.conf`
 # example setup: /usr/share/portage/config/make.conf.example
 # online resource: https://wiki.gentoo.org/wiki//etc/portage/make.conf
 
-# go all in with bleeding edge
-ACCEPT_KEYWORDS="~amd64"
-
 # These settings were set by the catalyst build script that automatically
 # built this stage.
 # Please consult /usr/share/portage/config/make.conf.example for a more
@@ -141,9 +138,9 @@ MAKEOPTS="--jobs ${NPROC} --load-average ${LOAD_AVG}"
 # variable definiing entries appended to emerge
 # each emerge job starts an makeopts job, hence jobs load increases; hopefully it balacnes trough load-avg opt
 # TODO idea to explore is buildpkg feature, see usepkg=y, binpkg-changed-deps=y, binpkg-respect-use=y
-EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} --jobs ${NPROC} --load-average ${LOAD_AVG}"
+EMERGE_DEFAULT_OPTS="--jobs ${NPROC} --load-average ${LOAD_AVG}"
 EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} --quiet y --verbose y --keep-going y"
-EMERGE_DEFAULT_OTPS="${EMERGE_DEFAULT_OPTS} --tree"
+EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} --tree"
 EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} --autounmask-write"
 
 # PORTAGE_SCHEDULING_POLICY; portage niceness

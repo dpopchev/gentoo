@@ -297,8 +297,12 @@ euse -E logrotate -p app-admin/sysklogd
 ```
 
 ```
-emerge --ask net-misc/networkmanager
-rc-update add NetworkManager default
+emerge --ask networkmanager sysklogd && \
+rc-update add NetworkManager default && \
+rc-update add sysklogd default
+```
+
+```
 # needed so non root users can manage system network connections
 # gpasswd -a ${USER} plugdev
 ```
@@ -321,7 +325,7 @@ nmcli dev wifi list # see wifi networks
 
 ```
 emerge --ask --verbose --update --deep --newuse @world
-emerge -a sysklogd vim xorg-server display-manager-init lightdm i3
+emerge -a vim xorg-server display-manager-init lightdm i3
 ```
 
 ```
@@ -334,7 +338,6 @@ env-update && source /etc/profile
 ```
 
 ```
-rc-update add sysklogd default && \
 rc-update add dbus default && \
 rc-update add display-manager default
 ```

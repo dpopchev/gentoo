@@ -288,25 +288,43 @@ grub-mkconfig -o /boot/grub/grub.cfg
 ### Finishing touches
 
 ```
-emerge -av gentoolkit
+emerge -av gentoolkit sudo
 ```
 
 ```
 euse -E networkmanager
-emerge --ask -f net-misc/networkmanager
-# rc-update add NetworkManager default
+euse -E logrotate -p app-admin/sysklogd
+```
+
+```
+emerge --ask net-misc/networkmanager
+rc-update add NetworkManager default
 # needed so non root users can manage system network connections
 # gpasswd -a ${USER} plugdev
 ```
 
+#### Local execution
+
+Save following scripts into local file to execute off the live environment.
+
 ```
-euse -E logrotate -p app-admin/sysklogd
-emerge -a -f sysklogd
-# rc-update add sysklogd default
+emerge --ask --verbose --update --deep --newuse @world
+emerge -a sysklogd vim xorg-server display-manager-init lightdm i3
 ```
 
 ```
-emerge -a -f vim sudo
+# etc/conf.d/display-manager
+DISPLAYMANAGER="lightdm"
+```
+
+```
+env-update && source /etc/profile
+```
+
+```
+rc-update add sysklogd default && \
+rc-update add dbus default && \
+rc-update add display-manager default
 ```
 
 ### Clean up

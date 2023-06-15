@@ -293,20 +293,20 @@ emerge -av gentoolkit
 
 ```
 euse -E networkmanager
-emerge --ask net-misc/networkmanager
-rc-update add NetworkManager default
+emerge --ask -f net-misc/networkmanager
+# rc-update add NetworkManager default
 # needed so non root users can manage system network connections
 # gpasswd -a ${USER} plugdev
 ```
 
 ```
 euse -E logrotate -p app-admin/sysklogd
-emerge -a sysklogd
-rc-update add sysklogd default
+emerge -a -f sysklogd
+# rc-update add sysklogd default
 ```
 
 ```
-emerge -av vim
+emerge -a -f vim
 ```
 
 ### Clean up

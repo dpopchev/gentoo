@@ -286,8 +286,15 @@ euse -E networkmanager && \
 euse -E logrotate -p app-admin/sysklogd
 ```
 
+Fetch packages and run off the liveusb.
+
 ```
-emerge --ask networkmanager sysklogd && \
+emerge --ask --fetchonly networkmanager sysklogd vim xorg-server display-manager-init lightdm i3
+```
+
+Save the rest and do when compilation finishes.
+
+```
 rc-update add NetworkManager default && \
 rc-update add sysklogd default
 ```
@@ -297,25 +304,15 @@ rc-update add sysklogd default
 # gpasswd -a ${USER} plugdev
 ```
 
+Network manager cli cheat sheet
+
 ```
 # save current wifi connection to reuse
 # sudo cat /etc/NetworkManager/system-connections/YOUR-SSID  
-```
-
-#### Local execution
-
-Save following scripts into local file to execute off the live environment.
-
-```
 # nmcli dev status
 # nmcli radio wifi
 nmcli dev wifi list # see wifi networks
 # sudo nmcli dev wifi connect network-ssid password "network-password"
-```
-
-```
-emerge --ask --verbose --update --deep --newuse @world
-emerge -a vim xorg-server display-manager-init lightdm i3
 ```
 
 ```
@@ -332,9 +329,7 @@ rc-update add dbus default && \
 rc-update add display-manager default
 ```
 
-```
-reboot
-```
+Reboot to confirm changes.
 
 ### Clean up
 

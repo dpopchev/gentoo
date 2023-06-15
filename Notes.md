@@ -138,8 +138,9 @@ MAKEOPTS="--jobs ${NPROC} --load-average ${LOAD_AVG}"
 # variable definiing entries appended to emerge
 # each emerge job starts an makeopts job, hence jobs load increases; hopefully it balacnes trough load-avg opt
 # TODO idea to explore is buildpkg feature, see usepkg=y, binpkg-changed-deps=y, binpkg-respect-use=y
-EMERGE_DEFAULT_OPTS="--jobs ${NPROC} --load-average ${LOAD_AVG}"
-EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} --quiet y --verbose y --keep-going y"
+EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} --jobs ${NPROC} --load-average ${LOAD_AVG}"
+EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} --keep-going y"
+EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} --verbose y --quiet-build y --quiet-fail y"
 EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} --tree"
 EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} --autounmask-write"
 

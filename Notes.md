@@ -292,7 +292,7 @@ emerge -av gentoolkit
 ```
 
 ```
-euse -E networkmanager
+euse -E networkmanager && \
 euse -E logrotate -p app-admin/sysklogd
 ```
 

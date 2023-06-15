@@ -272,7 +272,7 @@ eselect kernel list
 
 ```
 cd /usr/src/linux && \
-make localmodconfig && \
+yes '' | make localmodconfig && \
 make -j4 && make modules_install  && make install
 ```
 

@@ -288,7 +288,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 ### Finishing touches
 
 ```
-emerge -av gentoolkit sudo
+emerge -av gentoolkit
 ```
 
 ```
@@ -297,7 +297,7 @@ euse -E logrotate -p app-admin/sysklogd
 ```
 
 ```
-emerge --ask networkmanager sysklogd && \
+emerge --ask networkmanager sysklogd sudo && \
 rc-update add NetworkManager default && \
 rc-update add sysklogd default
 ```

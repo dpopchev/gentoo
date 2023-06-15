@@ -140,7 +140,7 @@ MAKEOPTS="--jobs ${NPROC} --load-average ${LOAD_AVG}"
 # TODO idea to explore is buildpkg feature, see usepkg=y, binpkg-changed-deps=y, binpkg-respect-use=y
 EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} --jobs ${NPROC} --load-average ${LOAD_AVG}"
 EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} --keep-going y"
-EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} --verbose y --quiet-build y --quiet-fail y"
+EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} --verbose y --quiet y"
 EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} --tree"
 EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} --autounmask-write"
 

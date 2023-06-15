@@ -184,10 +184,6 @@ LC_MESSAGES=C.utf8
 ```
 
 ```
-#emerge -av vim
-```
-
-```
 # for emerge --autounmask-write option
 for d in /etc/portage/package.*; do touch $d/zzz_autounmask; done 
 ```
@@ -307,6 +303,10 @@ rc-update add NetworkManager default
 euse -E logrotate -p app-admin/sysklogd
 emerge -a sysklogd
 rc-update add sysklogd default
+```
+
+```
+emerge -av vim
 ```
 
 ### Clean up

@@ -306,7 +306,7 @@ emerge -a -f sysklogd
 ```
 
 ```
-emerge -a -f vim
+emerge -a -f vim sudo
 ```
 
 ### Clean up

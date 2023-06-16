@@ -102,8 +102,7 @@ _Next steps are assuming work into chroot_
 emerge-webrsync
 ```
 
-Sample `/etc/portage/make.conf` [here](src/make.conf.md)
-
+Sample [/etc/portage/make.conf](src/make.conf)
 
 ```
 # for emerge --autounmask-write option
@@ -165,17 +164,6 @@ LABEL=gentoo		/		ext4		noatime		0 1
 # echo ${DESIRED_HOSTNAME} > /etc/hostname
 ```
 
-Check out password policies in `/etc/security/passwdc.conf`
-
-```
-passwd # set root password
-```
-
-```
-# useradd -g users -G wheel,portage,audio,video,usb -m ${USERNAME}
-# passwd ${USERNAME}
-```
-
 ### Kernel
 
 ```
@@ -210,63 +198,30 @@ grub-mkconfig -o /boot/grub/grub.cfg
 ### Finishing touches
 
 ```
-emerge -av gentoolkit sudo
-```
-
-```
-visudo
-# edit so to allow members of wheel group execute any command
-```
-
-```
-euse -E networkmanager && \
-euse -E logrotate -p app-admin/sysklogd
+emerge -av gentoolkit
 ```
 
 Fetch packages and run off the liveusb.
 
-```
-emerge --ask --fetchonly networkmanager sysklogd vim xorg-server display-manager-init lightdm i3
-```
+- [Enable sudo](src/sudo.md)
+- [Network management software](src/networkmanager.md)
+- [Logging system](src/logger.md)
+- [Cron](src/cron.md)
+- [Pulseaudio](src/pulseaudio.md)
+- [X](src/x.md)
+- [Automatic mount of drivers](src/udisks.md)
 
-Save the rest and do when compilation finishes.
 
-```
-rc-update add NetworkManager default && \
-rc-update add sysklogd default
-```
-
-```
-# needed so non root users can manage system network connections
-# gpasswd -a ${USER} plugdev
-```
-
-Network manager cli cheat sheet
+Check out password policies in `/etc/security/passwdc.conf`
 
 ```
-# save current wifi connection to reuse
-# sudo cat /etc/NetworkManager/system-connections/YOUR-SSID
-# nmcli dev status
-# nmcli radio wifi
-nmcli dev wifi list # see wifi networks
-# sudo nmcli dev wifi connect network-ssid password "network-password"
+passwd # set root password
 ```
 
 ```
-# etc/conf.d/display-manager
-DISPLAYMANAGER="lightdm"
+# useradd -g users -G portage,wheel,plugdev,cron,audio,video,usb -m ${USERNAME}
+# passwd ${USERNAME}
 ```
-
-```
-env-update && source /etc/profile
-```
-
-```
-rc-update add dbus default && \
-rc-update add display-manager default
-```
-
-Reboot to confirm changes.
 
 ### Clean up
 

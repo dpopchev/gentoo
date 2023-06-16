@@ -1,0 +1,70 @@
+Sample `/etc/portage/make.conf`
+
+```
+# example setup: /usr/share/portage/config/make.conf.example
+# online resource: https://wiki.gentoo.org/wiki//etc/portage/make.conf
+
+# These settings were set by the catalyst build script that automatically
+# built this stage.
+# Please consult /usr/share/portage/config/make.conf.example for a more
+# detailed example.
+# see march native flags: gcc -v -E -x c /dev/null -o /dev/null -march=native 2>&1 | grep /cc1
+COMMON_FLAGS="-O2 -pipe -march=native"
+CFLAGS="${COMMON_FLAGS}"
+CXXFLAGS="${COMMON_FLAGS}"
+FCFLAGS="${COMMON_FLAGS}"
+FFLAGS="${COMMON_FLAGS}"
+
+# space delimited list of dirs Portage will not blindly copy over new versions of files
+# CONFIG_PROTECT
+
+# Portage features, incremental; see /usr/share/portage/config/make.globals
+# TODO see buildpkg
+FEATURES="candy downgrade-backup unmerge-backup"
+
+# GENTOO_MIRRORS
+
+# get using lspu or nproc
+NPROC=4
+LOAD_AVG=3.75 # ~ 0.9 of NPROC
+
+# specify make arguments when pacakges are built
+MAKEOPTS="--jobs ${NPROC} --load-average ${LOAD_AVG}"
+
+# variable definiing entries appended to emerge
+# each emerge job starts an makeopts job, hence jobs load increases; hopefully it balacnes trough load-avg opt
+# TODO idea to explore is buildpkg feature, see usepkg=y, binpkg-changed-deps=y, binpkg-respect-use=y
+EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} --jobs ${NPROC} --load-average ${LOAD_AVG}"
+EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} --keep-going y"
+EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} --verbose y --quiet y"
+EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} --tree"
+EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} --autounmask-write"
+
+# PORTAGE_SCHEDULING_POLICY; portage niceness
+# PORTAGE_TMPDIR; location of temporary files
+# DISTDIR; location downloaded source code archives
+# PKGDIR; location store binary packages
+
+# system wide setting or deactivation of flags
+USE="bash-completion -zsh-completion -bluetooth -dvd -dvdr branding -emacs -gnome -gnome-keyring -kde X -wayland"
+
+# global software licenses definition
+ACCEPT_LICENSE="-* @FREE"
+
+# controls which localization files are built and installed via some gettext-based build systmes
+LINGUAS="en en_US"
+
+# CPU_FLAGS_*; use cpuid2cpuflags
+
+INPUT_DEVICES="synaptics libinput"
+
+# see supported values: grep -i portuguese /var/db/repos/gentoo/profiles/desc/l10n.desc
+# determine which extra localization support to install
+# L10N
+
+VIDEO_CARDS="intel i965"
+
+# This sets the language of build output to English.
+# Please keep this setting intact when reporting bugs.
+LC_MESSAGES=C.utf8
+```

@@ -17,15 +17,4 @@ Browse around `/etc/laptop-mode/conf.d`
 
 Acpi events can be handled via `/etc/acpi/default.sh`
 
-
-```
-emergea -av -f cpufreqd
-```
-
-Configuration is found `/etc/cpufreqd.conf`
-
-```
-rc-update add cpufreqd default
-```
-
 Note see available suspension modes `cat /sys/power/state`

@@ -210,6 +210,7 @@ Fetch packages and run off the liveusb.
 - [Pulseaudio](src/pulseaudio.md)
 - [X](src/x.md)
 - [Automatic mount of drivers](src/udisks.md)
+- [Laptop mode](src/laptop_mode.md)
 
 
 Check out password policies in `/etc/security/passwdc.conf`

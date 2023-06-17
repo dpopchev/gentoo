@@ -5,5 +5,5 @@ euse -E udisks
 ```
 
 ```
-udisksctl ...
+emerge -avf udiskie
 ```

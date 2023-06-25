@@ -202,7 +202,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 ### Finishing touches
 
 ```
-emerge -av gentoolkit
+emerge -v gentoolkit
 ```
 
 Fetch packages and run off the liveusb.

@@ -1,11 +1,9 @@
-#### Networkmanager
-
 ```
 euse -E networkmanager
 ```
 
 ```
-emerge --ask --fetchonly networkmanager
+emerge --fetchonly networkmanager
 ```
 
 ```
@@ -22,3 +20,5 @@ Network manager cli cheat sheet
 nmcli dev wifi list # see wifi networks
 # sudo nmcli dev wifi connect network-ssid password "network-password"
 ```
+
+On Gentoo, NetworkManager uses the `plugdev` group to specify which non-root users can manage system network connections (treated as pluggable devices). Be sure to add each user who should be permitted to manage the network connections to that group. 

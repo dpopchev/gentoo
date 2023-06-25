@@ -185,6 +185,11 @@ eselect kernel list
 ```
 
 ```
+# inspect Live system modules loaded per hardware
+lspci -knn
+```
+
+```
 cd /usr/src/linux && \
 yes '' | make localmodconfig && \
 make -j4 && make modules_install  && make install

@@ -5,5 +5,7 @@ euse -E udisks
 ```
 
 ```
-emerge -avf udiskie
+emerge -f udiskie
 ```
+
+Make sure users are part of `plugdev` group.

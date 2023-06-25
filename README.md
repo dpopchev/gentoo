@@ -102,7 +102,7 @@ _Next steps are assuming work into chroot_
 emerge-webrsync
 ```
 
-Sample [/etc/portage/make.conf](src/make.conf)
+Config portage with mine sample [/etc/portage/make.conf](src/make.conf)
 
 ```
 # for emerge --autounmask-write option

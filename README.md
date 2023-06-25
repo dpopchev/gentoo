@@ -168,11 +168,11 @@ LABEL=gentoo		/		ext4		noatime		0 1
 
 ```
 echo "sys-kernel/linux-firmware linux-fw-redistributable no-source-code" >> /etc/portage/package.license && \
-emerge --ask sys-kernel/linux-firmware
+emerge -v sys-kernel/linux-firmware
 ```
 
 ```
-emerge -av gentoo-sources
+emerge -v gentoo-sources
 ```
 
 ```

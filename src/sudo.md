@@ -1,5 +1,5 @@
 ```
-emerge -a sudo
+emerge -v sudo
 ```
 
 Edit so to allow members of wheel group execute any command with `visudo`.

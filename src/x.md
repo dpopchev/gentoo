@@ -3,7 +3,8 @@ euse -E X
 ```
 
 ```
-# detect the graphics card and follow corresponding wiki for 
+# detect the graphics card and follow corresponding wiki;
+# likely just modify VIDEO_CARDS make.conf variable
 lspci | grep -i VGA
 ```
 

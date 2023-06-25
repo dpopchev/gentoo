@@ -9,7 +9,7 @@ lspci | grep -i VGA
 ```
 
 ```
-emerge --ask --fetchonly xorg-server display-manager-init lightdm
+emerge --fetchonly xorg-server display-manager-init lightdm
 ```
 
 ```

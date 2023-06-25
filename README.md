@@ -207,10 +207,10 @@ emerge -v gentoolkit
 
 Fetch packages and run off the liveusb.
 
-- [Enable sudo](src/sudo.md)
-- [Network management software](src/networkmanager.md)
 - [Logging system](src/logger.md)
 - [Cron](src/cron.md)
+- [Enable sudo](src/sudo.md)
+- [Network management software](src/networkmanager.md)
 - [Pulseaudio](src/pulseaudio.md)
 - [X](src/x.md)
 - [Automatic mount of drivers](src/udisks.md)

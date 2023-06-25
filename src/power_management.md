@@ -5,7 +5,7 @@ euse -E acpi
 ```
 
 ```
-emerge -f -av laptop-mode-tools acpi acpitool acpilight
+emerge -f -av laptop-mode-tools acpid
 ```
 
 ```

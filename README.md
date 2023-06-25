@@ -219,9 +219,8 @@ Fetch packages and run off the liveusb.
 - [Audio](src/audio.md)
 - [X](src/x.md)
 - [Automatic mount of drivers](src/udisks.md)
-- [Laptop mode](src/laptop_mode.md)
-- [bash completion](src/bash_completion.md)
-
+- [Power management](src/power_management.md)
+- [Bash completion](src/bash_completion.md)
 
 Check out password policies in `/etc/security/passwdc.conf`
 

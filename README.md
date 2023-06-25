@@ -217,7 +217,7 @@ Fetch packages and run off the liveusb.
 - [Enable sudo](src/sudo.md)
 - [Network management software](src/networkmanager.md)
 - [Audio](src/audio.md)
-- [X](src/x.md)
+- [Xorg](src/xorg.md)
 - [Automatic mount of drivers](src/udisks.md)
 - [Power management](src/power_management.md)
 - [Bash completion](src/bash_completion.md)

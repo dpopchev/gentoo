@@ -1,5 +1,5 @@
 ```
-euse -E X
+euse -E X xinerama
 ```
 
 ```

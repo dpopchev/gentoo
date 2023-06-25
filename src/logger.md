@@ -1,11 +1,9 @@
-#### Logger
-
 ```
 euse -E logrotate -p app-admin/sysklogd
 ```
 
 ```
-emerge --ask --fetchonly sysklogd
+emerge -v sysklogd
 ```
 
 ```

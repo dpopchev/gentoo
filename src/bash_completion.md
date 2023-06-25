@@ -1,0 +1,3 @@
+```
+emerge -v app-shells/bash-completion app-shells/gentoo-bashcomp
+```

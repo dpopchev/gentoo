@@ -11,4 +11,6 @@ Allow more consecutive authentication failures before `faillock` kick you out by
 # for this user during the recent interval exceeds n tries.
 # The default is 3.
 deny = 10
-``` 
+```
+
+Do not forget to give trusted users access by adding the to `wheel` group.

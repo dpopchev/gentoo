@@ -161,7 +161,7 @@ LABEL=gentoo		/		ext4		noatime		0 1
 ```
 
 ```
-# echo ${DESIRED_HOSTNAME} > /etc/hostname
+# echo "HOSTNAME=${DESIRED_HOSTNAME}" > /etc/conf.d/hostname
 ```
 
 ### Kernel

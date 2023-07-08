@@ -1,4 +1,7 @@
 ```
-euse -E bash-completion && \
-emerge -v app-shells/bash-completion app-shells/gentoo-bashcomp
+euse -E bash-completion
+```
+
+```
+emerge -vf app-shells/bash-completion app-shells/gentoo-bashcomp
 ```

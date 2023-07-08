@@ -207,8 +207,18 @@ grub-mkconfig -o /boot/grub/grub.cfg
 ### Finishing touches
 
 ```
-emerge -v gentoolkit
+emerge -v gentoolkit 
 ```
+
+```
+emerge --ask --verbose --update --deep --newuse --fetchonly @world
+```
+
+Strategy is
+
+- use repository as reference
+- fetch packages while on liveusb
+- compile offline
 
 Fetch packages and run off the liveusb.
 

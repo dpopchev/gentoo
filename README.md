@@ -207,7 +207,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 ### Finishing touches
 
 ```
-emerge -v gentoolkit 
+emerge -v gentoolkit
 ```
 
 ```
@@ -222,15 +222,15 @@ Strategy is
 
 Fetch packages and run off the liveusb.
 
-- [Logging system](src/logger.md)
-- [Cron](src/cron.md)
-- [Enable sudo](src/sudo.md)
-- [Network management software](src/networkmanager.md)
-- [Audio](src/audio.md)
-- [Xorg](src/xorg.md)
-- [Automatic mount of drivers](src/udisks.md)
-- [Power management](src/power_management.md)
-- [Bash completion](src/bash_completion.md)
+- [Logging system](doc/logger.md)
+- [Cron](doc/cron.md)
+- [Enable sudo](doc/sudo.md)
+- [Network management software](doc/networkmanager.md)
+- [Audio](doc/audio.md)
+- [Xorg](doc/xorg.md)
+- [Automatic mount of drivers](doc/udisks.md)
+- [Power management](doc/power_management.md)
+- [Bash completion](doc/bash_completion.md)
 
 Check out password policies in `/etc/security/passwdc.conf`
 

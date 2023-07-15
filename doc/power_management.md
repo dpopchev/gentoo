@@ -15,6 +15,3 @@ rc-update add laptope_mode default
 - Browse around `/etc/laptop-mode/conf.d`
 
 Note see available suspension modes `cat /sys/power/state`
-
-#### Acpi
-

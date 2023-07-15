@@ -1,5 +1,3 @@
-#### Udisks
-
 ```
 euse -E udisks
 ```

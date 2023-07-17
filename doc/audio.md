@@ -1,3 +1,6 @@
+# Audio
+
+## Quickstart
 ```
 euse -E pulseaudio alsa
 ```

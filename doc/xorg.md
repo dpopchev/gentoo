@@ -1,3 +1,7 @@
+# X
+
+## Quickstart
+
 ```
 euse -E X xinerama
 ```

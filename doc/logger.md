@@ -1,3 +1,7 @@
+# Logger
+
+## Quickstart
+
 ```
 euse -E logrotate -p app-admin/sysklogd
 ```
@@ -11,6 +15,10 @@ rc-update add sysklogd default
 ```
 
 When cron is installed schedule weekly `logrotate` execution, e.g. script `/etc/cron.weekly/logrotate.sh`:
+
+## Configs
+
+### Schedule log rotation
 
 ```
 #!/bin/sh

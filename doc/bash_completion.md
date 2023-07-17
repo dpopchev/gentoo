@@ -1,3 +1,6 @@
+# Bash
+
+## Quickstart
 ```
 euse -E bash-completion
 ```

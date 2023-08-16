@@ -52,7 +52,7 @@ mkdir -p /mnt/gentoo && mount /dev/sda3 /mnt/gentoo
 
 ```
 cd /mnt/gentoo && \
-wget https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/20230604T170201Z/stage3-amd64-openrc-20230604T170201Z.tar.xz && \
+wget https://distfiles.gentoo.org/releases/amd64/autobuilds/20230813T170146Z/stage3-amd64-openrc-20230813T170146Z.tar.xz && \
 tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner
 ```
 

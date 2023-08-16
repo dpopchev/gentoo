@@ -211,7 +211,7 @@ emerge -v gentoolkit
 ```
 
 ```
-emerge --ask --verbose --update --deep --newuse --fetchonly @world
+emerge --ask --verbose --update --deep --newuse @world
 ```
 
 Strategy is

@@ -14,10 +14,9 @@ emerge networkmanager
 rc-update add NetworkManager default
 ```
 
-On Gentoo, NetworkManager uses the `plugdev` group to specify which non-root
-users can manage system network connections (treated as pluggable devices).
-
 ## Usage
+
+Grant trusted users to manage network connections, without elevated rights, by adding them into `plugdev` group.
 
 ### Cheatsheet
 

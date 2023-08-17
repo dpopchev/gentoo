@@ -19,7 +19,7 @@ rc-update add laptop_mode default
 
 Browse around `/etc/laptop-mode/conf.d`
 
-ACPI configuration is located at `/etc/acpi`.
+ACPI configuration is located at `/etc/acpi`. Maybe not unwise to clean up the content as shown [here](https://github.com/dpopchev/linux-gentoo/tree/master/src/acpi)
 
 Note see available suspension modes `cat /sys/power/state`
 

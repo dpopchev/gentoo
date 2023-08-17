@@ -13,6 +13,11 @@ lspci | grep -i VGA
 ```
 
 ```
+# make.conf INPUT_DEVICES is predefined, change if needed
+# INPUT_DEVICES="libinput"
+```
+
+```
 emerge xorg-server display-manager-init lightdm
 ```
 

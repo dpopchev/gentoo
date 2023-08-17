@@ -7,7 +7,7 @@ euse -E pulseaudio alsa
 ```
 
 ```
-emerge --fetchonly pavucontrol
+emerge pavucontrol
 ```
 
 ## Usage

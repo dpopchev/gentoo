@@ -7,7 +7,7 @@ euse -E acpi
 ```
 
 ```
-emerge tlp acpid acpitool acpilight
+emerge tlp acpid acpitool acpilight powertop
 ```
 
 NOTE: `tlp` is alternative to `laptop-mode-tools`, see [wiki](https://wiki.gentoo.org/wiki/Power_management).
@@ -19,7 +19,7 @@ rc-update add tlp default
 
 ## Usage
 
-Browse around `/etc/laptop-mode/conf.d`
+`powertop --calibrate`
 
 ACPI configuration is located at `/etc/acpi`. Maybe not unwise to clean up the content of `default.sh` so all events are unhandled. 
 

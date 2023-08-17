@@ -12,7 +12,7 @@ emerge laptop-mode-tools acpid acpitool acpilight
 
 ```
 rc-update add acpid default && \
-rc-update add laptope_mode default
+rc-update add laptop_mode default
 ```
 
 ## Usage

@@ -211,7 +211,7 @@ emerge --ask --verbose --update --deep --newuse @world
 ```
 
 ```
-emerge -v gentoolkit portage-utils
+emerge -v gentoolkit
 ```
 
 - [Logging system](doc/logger.md)

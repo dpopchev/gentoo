@@ -18,6 +18,10 @@ rc-update add NetworkManager default
 
 Grant trusted users to manage network connections, without elevated rights, by adding them into `plugdev` group.
 
+### Migrate connections
+
+Connections are found at `/etc/NetworkManager/system-connections` in file per Wifi Network. 
+
 ### Cheatsheet
 
 Network manager cli cheat sheet

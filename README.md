@@ -216,7 +216,7 @@ emerge -v gentoolkit portage-utils
 
 - [Logging system](doc/logger.md)
 - [Cron](doc/cron.md)
-- [Enable sudo](doc/sudo.md)
+- [Sudo](doc/sudo.md)
 - [Network management software](doc/networkmanager.md)
 - [Audio](doc/audio.md)
 - [Xorg](doc/xorg.md)

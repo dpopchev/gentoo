@@ -15,7 +15,7 @@ rc-update add acpid default && \
 rc-update add laptope_mode default
 ```
 
-## Configurations
+## Usage
 
 Browse around `/etc/laptop-mode/conf.d`
 
@@ -23,7 +23,7 @@ ACPI configuration is located at `/etc/acpi`; see a [minimum example](../src/acp
 
 Note see available suspension modes `cat /sys/power/state`
 
-## Userspace
+### Userspace
 
 ACPI handling is done system wide which may not be desirable, e.g. `pulseaudio`
 is running a server per user, making it undesirable to mute/vol up/vol down; (it

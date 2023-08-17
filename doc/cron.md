@@ -11,6 +11,6 @@ emerge --config sys-process/fcron
 rc-update add fcron default
 ```
 
-## Configs
+## Configuration
 
 Grant trusted users access by adding them into `cron` group.

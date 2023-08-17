@@ -7,7 +7,7 @@ euse -E networkmanager
 ```
 
 ```
-emerge --fetchonly networkmanager
+emerge networkmanager
 ```
 
 ```
@@ -17,8 +17,7 @@ rc-update add NetworkManager default
 On Gentoo, NetworkManager uses the `plugdev` group to specify which non-root
 users can manage system network connections (treated as pluggable devices).
 
-## Configs
-
+## Usage
 
 ### Cheatsheet
 

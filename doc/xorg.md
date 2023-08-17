@@ -33,4 +33,8 @@ rc-update add display-manager default
 
 ## Usage
 
+Add trusted users into `input` group to access devices directly.
+
+## Usage
+
 Grant trusted users acceess by adding them into `video` group.

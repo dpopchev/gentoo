@@ -207,11 +207,11 @@ grub-mkconfig -o /boot/grub/grub.cfg
 ### Finishing touches
 
 ```
-emerge --ask --verbose --update --deep --newuse @world gentoolkit
+emerge --ask --verbose --update --deep --newuse @world
 ```
 
 ```
-emerge -v gentoolkit
+emerge -v gentoolkit portage-utils
 ```
 
 - [Logging system](doc/logger.md)

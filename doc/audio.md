@@ -1,6 +1,7 @@
 # Audio
 
 ## Quickstart
+
 ```
 euse -E pulseaudio alsa
 ```
@@ -9,4 +10,6 @@ euse -E pulseaudio alsa
 emerge --fetchonly pavucontrol
 ```
 
-Do not forget to add users to `audio` group.
+## Usage
+
+Grant trusted users access by adding them into `audio` group.

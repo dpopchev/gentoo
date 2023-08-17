@@ -24,4 +24,4 @@ touch $logrotate_script && \
 chmod u+x $logrotate_script
 ```
 
-[Sample script](../src/logrotate.sh).
+Find sample script [here](../src/logrotate.sh).

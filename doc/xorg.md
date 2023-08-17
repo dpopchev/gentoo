@@ -18,7 +18,7 @@ lspci | grep -i VGA
 ```
 
 ```
-emerge xorg-server display-manager-init lightdm
+emerge xorg-server display-manager-init lightdm libinput
 ```
 
 ```

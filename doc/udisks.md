@@ -7,7 +7,7 @@ euse -E udisks
 ```
 
 ```
-emerge -f udiskie
+emerge udiskie
 ```
 
-Make sure users are part of `plugdev` group.
+Add trusted users into `plugdev` group.

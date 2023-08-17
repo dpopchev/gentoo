@@ -26,7 +26,7 @@ Note see available suspension modes `cat /sys/power/state`
 ### Userspace
 
 ACPI handling is done system wide which may not be desirable, e.g. `pulseaudio`
-is running a server per user, making it undesirable to mute/vol up/vol down; (it
+is running a server per user, making it unpractical to mute/vol up/vol down; (it
 is a global state of the system).
 
 `acpilight` is providing `xbacklight` utility to change brightness with user

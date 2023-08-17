@@ -13,7 +13,7 @@ lspci | grep -i VGA
 ```
 
 ```
-emerge --fetchonly xorg-server display-manager-init lightdm
+emerge xorg-server display-manager-init lightdm
 ```
 
 ```
@@ -26,4 +26,6 @@ rc-update add dbus default && \
 rc-update add display-manager default
 ```
 
-Do not forget to add users to `video` group.
+## Usage
+
+Grant trusted users acceess by adding them into `video` group.

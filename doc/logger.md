@@ -14,7 +14,7 @@ emerge -v sysklogd
 rc-update add sysklogd default
 ```
 
-## Configs
+## Usage
 
 ### Schedule log rotation
 

@@ -7,12 +7,14 @@ euse -E acpi
 ```
 
 ```
-emerge laptop-mode-tools acpid acpitool acpilight
+emerge tlp acpid acpitool acpilight
 ```
+
+NOTE: `tlp` is alternative to `laptop-mode-tools`, see [wiki](https://wiki.gentoo.org/wiki/Power_management).
 
 ```
 rc-update add acpid default && \
-rc-update add laptop_mode default
+rc-update add tlp default
 ```
 
 ## Usage

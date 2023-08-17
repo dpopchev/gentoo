@@ -6,6 +6,8 @@
 emerge -v sudo
 ```
 
+## Usage
+
 Edit so to allow members of wheel group execute any command with `visudo`.
 
 ```
@@ -26,4 +28,4 @@ deny = 10
 ...
 ```
 
-Do not forget to give trusted users access by adding the to `wheel` group.
+Grant access to trusted users by adding them into `wheel` group.

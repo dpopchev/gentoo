@@ -14,7 +14,7 @@ lspci | grep -i VGA
 
 ```
 # make.conf INPUT_DEVICES is predefined, change if needed
-# INPUT_DEVICES="libinput"
+# INPUT_DEVICES="libinput synaptics"
 ```
 
 ```

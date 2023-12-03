@@ -201,7 +201,7 @@ lspci -knn
 ```
 cd /usr/src/linux && \
 yes '' | make localmodconfig && \
-make -j4 && make modules_install  && make install
+make -j4 && make modules_install && make install
 ```
 
 ### Bootloader

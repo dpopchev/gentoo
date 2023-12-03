@@ -173,7 +173,8 @@ tmpfs    /tmp  tmpfs  size=4G,rw,nosuid,nodev,mode=1777  0 0
 ```
 
 ```
-# echo "HOSTNAME=${DESIRED_HOSTNAME}" > /etc/conf.d/hostname
+# echo "hostname=$hostname" > /etc/conf.d/hostname
+# echo $hostname > /etc/hostname
 ```
 
 ### Kernel

@@ -50,9 +50,12 @@ mkdir -p /mnt/gentoo && mount /dev/sda3 /mnt/gentoo
 
 ### Install stage tarball
 
+Get the tarball link from the [gentoo download section](https://www.gentoo.org/downloads/)
+
 ```
+TARBALL=; 
 cd /mnt/gentoo && \
-wget https://distfiles.gentoo.org/releases/amd64/autobuilds/20230813T170146Z/stage3-amd64-openrc-20230813T170146Z.tar.xz && \
+wget $TARBALL && \
 tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner
 ```
 

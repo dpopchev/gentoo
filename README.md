@@ -240,7 +240,7 @@ passwd # set root password
 ```
 
 ```
-# useradd -g users -G portage,wheel,plugdev,cron,audio,video,usb -m ${USERNAME}
+# useradd -g users -G cron,wheel,plugdev,audio,input,video,portage,usb -m ${USERNAME}
 # passwd ${USERNAME}
 ```
 

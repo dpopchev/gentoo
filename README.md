@@ -227,11 +227,11 @@ emerge -v gentoolkit
 - [Cron](doc/cron.md)
 - [Sudo](doc/sudo.md)
 - [Network management software](doc/networkmanager.md)
-- [Audio](doc/audio.md)
+- [Audio TBD pipewire](doc/audio.md)
 - [Xorg](doc/xorg.md)
-- [Automatic mount of drivers](doc/udisks.md)
-- [Power management](doc/power_management.md)
-- [Bash completion](doc/bash_completion.md)
+- [Automatic mount of drivers TBD](doc/udisks.md)
+- [Power management TBD](doc/power_management.md)
+- [Bash completion TBD](doc/bash_completion.md)
 
 Check out password policies in `/etc/security/passwdc.conf`
 

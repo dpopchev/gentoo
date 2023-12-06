@@ -227,6 +227,7 @@ emerge -v gentoolkit
 - [Cron](doc/cron.md)
 - [Sudo](doc/sudo.md)
 - [Network management software](doc/networkmanager.md)
+- [NTPD](doc/ntp.md)
 - [Audio TBD pipewire](doc/audio.md)
 - [Xorg](doc/xorg.md)
 - [Automatic mount of drivers TBD](doc/udisks.md)

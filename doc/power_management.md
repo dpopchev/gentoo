@@ -8,6 +8,11 @@ emerge thermald && rc-config add thermald
 ```
 
 ```
+# prefer tlp
+emerge --ask sys-power/tlp && rc-update add tlp default && rc-service tlp start
+```
+
+```
 euse -E acpi
 ```
 

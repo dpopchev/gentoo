@@ -13,6 +13,9 @@ emerge sys-power/tlp && rc-update add tlp default && rc-service tlp start
 ```
 
 ```
+emerge powertop && powertop -
+
+```
 euse -E acpi
 ```
 

@@ -3,6 +3,11 @@
 ## Quickstart
 
 ```
+# take advantage of Intel Linux thermal daemon
+emerge thermald && rc-config add thermald
+```
+
+```
 euse -E acpi
 ```
 

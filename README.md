@@ -230,9 +230,10 @@ emerge -v gentoolkit
 - [NTPD](doc/ntp.md)
 - [Audio](doc/audio.md)
 - [Xorg](doc/xorg.md)
-- [Automatic mount of drivers TBD](doc/udisks.md)
+- [Automatic mount of drivers](doc/udisks.md)
 - [Power management](doc/power_management.md)
-- [Bash completion TBD](doc/bash_completion.md)
+- [Notification daemon](doc/notification_daemon.md)
+- [Bash completion](doc/bash_completion.md)
 
 Check out password policies in `/etc/security/passwdc.conf`
 

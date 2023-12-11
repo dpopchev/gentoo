@@ -1,6 +1,8 @@
 # X
 
-## Quickstart
+## Installation
+
+### Requirements
 
 ```
 euse -E X xinerama
@@ -17,9 +19,15 @@ lspci | grep -i VGA
 # INPUT_DEVICES="libinput synaptics"
 ```
 
+### Install
+
 ```
 emerge xorg-server display-manager-init lightdm libinput
 ```
+
+## Usage
+
+### Setup
 
 ```
 # etc/conf.d/display-manager
@@ -27,12 +35,19 @@ DISPLAYMANAGER="lightdm"
 ```
 
 ```
-rc-update add dbus default && \
+rc-update add dbus default
+```
+
+```
 rc-update add display-manager default
 ```
 
-## Usage
+Add trusted users into `input` and `video` groups. The former allows direct
+device access.
 
-Grant trusted users acceess by adding them into `input` group to access devices directly.
+`LightDM` executes users `~/.xprofile` at login.
 
-Grant trusted users acceess by adding them into `video` group.
+```
+# ~/.xprofile
+xset -b # disable system beep in X windows
+```

@@ -49,5 +49,8 @@ device access.
 
 ```
 # ~/.xprofile
-xset -b # disable system beep in X windows
+# disable system beep in X windows
+xset -b
+# keyboard layout
+setxkbmap -layout us,bg -option grp:alt_shift_toggle
 ```

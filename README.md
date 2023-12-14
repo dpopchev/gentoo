@@ -53,7 +53,7 @@ mkdir -p /mnt/gentoo && mount /dev/sda3 /mnt/gentoo
 Get the tarball link from the [gentoo download section](https://www.gentoo.org/downloads/)
 
 ```
-TARBALL=; 
+TARBALL=;
 cd /mnt/gentoo && \
 wget $TARBALL && \
 tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner
@@ -234,6 +234,7 @@ emerge -v gentoolkit
 - [Power management](doc/power_management.md)
 - [Notification daemon](doc/notification_daemon.md)
 - [Bash completion](doc/bash_completion.md)
+- [Some recommendations](doc/recommendations.md)
 
 Check out password policies in `/etc/security/passwdc.conf`
 

@@ -2,7 +2,7 @@
 
 Installation commands and some notes.
 
-## Installation outline
+## Installation
 
 - [Handbook](https://wiki.gentoo.org/wiki/Handbook:AMD64)
 - [Quick Checklist](https://wiki.gentoo.org/wiki/Quick_Installation_Checklist)
@@ -10,6 +10,8 @@ Installation commands and some notes.
 Assuming `Gentoo` live usb for **amd64**.
 
 ### Preparation
+
+#### LiveUSB
 
 ```
 sudo su
@@ -28,7 +30,7 @@ passwd gentoo # change active user password on livecd
 xset -b && xset b off && xset b 0 0 0
 ```
 
-### Prepare the disks
+#### Disks
 
 Use `gparted`.
 
@@ -48,7 +50,7 @@ swapon /dev/sda2
 mkdir -p /mnt/gentoo && mount /dev/sda3 /mnt/gentoo
 ```
 
-### Install stage tarball
+### Stage Tarball
 
 Get the tarball link from the [gentoo download section](https://www.gentoo.org/downloads/)
 
@@ -59,14 +61,14 @@ wget $TARBALL && \
 tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner
 ```
 
-### Gentoo ebuild repository
+### Ebuild repository
 
 ```
 mkdir --parents /mnt/gentoo/etc/portage/repos.conf && \
 cp /mnt/gentoo/usr/share/portage/config/repos.conf /mnt/gentoo/etc/portage/repos.conf/gentoo.conf
 ```
 
-### Copy DNS info
+### DNS info
 
 ```
 chronyd -q # sync time
